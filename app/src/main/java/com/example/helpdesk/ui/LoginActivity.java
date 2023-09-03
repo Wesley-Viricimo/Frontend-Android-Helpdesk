@@ -1,4 +1,4 @@
-package com.example.helpdesk.activity;
+package com.example.helpdesk.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
