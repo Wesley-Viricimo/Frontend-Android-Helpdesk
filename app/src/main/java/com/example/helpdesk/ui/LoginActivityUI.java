@@ -2,6 +2,8 @@ package com.example.helpdesk.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,10 +61,17 @@ public class LoginActivityUI extends AppCompatActivity {
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (!response.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos", Toast.LENGTH_LONG).show();
+                        if (response.isSuccessful()) {
+                            String token = response.headers().get("Authorization").substring(7);
+                            SharedPreferences preferences = getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
+                            preferences.edit().putString("TOKEN",token).apply();
+
+                            /*Retrieve token wherever necessary
+                            SharedPreferences preferences = getActivity().getSharedPreferences("MY_APP",Context.MODE_PRIVATE);
+                            String retrivedToken  = preferences.getString("TOKEN",null);//second parameter default value.
+                             */
                         } else {
-                            System.out.println(response.headers().get("Authorization"));
+                            Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override
