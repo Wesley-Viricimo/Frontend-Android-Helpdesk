@@ -44,57 +44,51 @@ public class LoginActivityUI extends AppCompatActivity {
         String email = edtEmail.getText().toString();
         String senha = edtSenha.getText().toString();
 
-        if (validaEmail(email)) {
-            if (validaSenha(senha)) {
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://10.0.2.2:8080")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
+        if (validaEmail(email) && validaSenha(senha)) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://10.0.2.2:8080/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-                ApiService apiService = retrofit.create(ApiService.class);
-                Credenciais credenciais = new Credenciais(email, senha);
+            ApiService apiService = retrofit.create(ApiService.class);
+            Credenciais credenciais = new Credenciais(email, senha);
 
-                Call<Void> call = apiService.validarUsuario(credenciais);
+            Call<Void> call = apiService.validarUsuario(credenciais);
 
-                try {
-                    call.enqueue(new Callback<Void>() {
-                        @Override
-                        public void onResponse(Call<Void> call, Response<Void> response) {
-                            if (!response.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos", Toast.LENGTH_LONG);
-                            } else {
-                                System.out.println(response.headers().get("Authorization"));
-                            }
+            try {
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos", Toast.LENGTH_LONG).show();
+                        } else {
+                            System.out.println(response.headers().get("Authorization"));
                         }
-
-                        @Override
-                        public void onFailure(Call<Void> call, Throwable t) {
-                            t.printStackTrace();
-                        }
-                    });
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
+                    }
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            Toast.makeText(getApplicationContext(), "Informe a senha!", Toast.LENGTH_LONG);
-        } else {
-            Toast.makeText(getApplicationContext(), "Informe o e-mail!", Toast.LENGTH_LONG);
         }
     }
 
     private boolean validaEmail(String email) {
-        if (!email.equals("") && !email.equals(null) && email.contains("@")) {
+        if (!email.equals("") && !email.equals(null) && email.contains("@") && email.contains(".com")) {
             return true;
-        } else {
-            return false;
         }
+        Toast.makeText(getApplicationContext(), "Informe um e-mail válido!", Toast.LENGTH_LONG).show();
+        return false;
     }
 
     private boolean validaSenha(String senha) {
         if (!senha.equals("") && !senha.equals(null)) {
             return true;
-        } else {
-            return false;
         }
+        Toast.makeText(getApplicationContext(), "Informe a senha!", Toast.LENGTH_LONG).show();
+        return false;
     }
 }

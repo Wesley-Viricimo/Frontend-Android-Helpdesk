@@ -9,6 +9,6 @@ import retrofit2.http.POST;
 
 public interface ApiService {
 
-    @POST("/login")
+    @POST("login")
     Call<Void> validarUsuario(@Body Credenciais credenciais);
 }
