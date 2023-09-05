@@ -63,13 +63,7 @@ public class LoginActivityUI extends AppCompatActivity {
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
                             String token = response.headers().get("Authorization").substring(7);
-                            SharedPreferences preferences = getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
-                            preferences.edit().putString("TOKEN",token).apply();
-
-                            /*Retrieve token wherever necessary
-                            SharedPreferences preferences = getActivity().getSharedPreferences("MY_APP",Context.MODE_PRIVATE);
-                            String retrivedToken  = preferences.getString("TOKEN",null);//second parameter default value.
-                             */
+                            salvarToken(token);
                         } else {
                             Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos", Toast.LENGTH_LONG).show();
                         }
@@ -99,5 +93,15 @@ public class LoginActivityUI extends AppCompatActivity {
         }
         Toast.makeText(getApplicationContext(), "Informe a senha!", Toast.LENGTH_LONG).show();
         return false;
+    }
+
+    private void salvarToken(String token) {
+        SharedPreferences preferences = getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
+        preferences.edit().putString("TOKEN",token).apply();
+
+         /*Retrieve token wherever necessary
+          SharedPreferences preferences = getActivity().getSharedPreferences("MY_APP",Context.MODE_PRIVATE);
+         String retrivedToken  = preferences.getString("TOKEN",null);//second parameter default value.
+        */
     }
 }
