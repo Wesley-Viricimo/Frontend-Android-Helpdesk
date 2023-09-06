@@ -2,12 +2,15 @@ package com.example.helpdesk.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.helpdesk.R;
@@ -24,6 +27,7 @@ public class LoginActivityUI extends AppCompatActivity {
     private EditText edtEmail;
     private EditText edtSenha;
     private Button btnEntrar;
+    private ProgressBar progressBarLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class LoginActivityUI extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtSenha = findViewById(R.id.edtSenha);
         btnEntrar = findViewById(R.id.btnEntrar);
+        progressBarLogin = findViewById(R.id.progressbarLogin);
+
 
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +53,8 @@ public class LoginActivityUI extends AppCompatActivity {
         String senha = edtSenha.getText().toString();
 
         if (validaEmail(email) && validaSenha(senha)) {
+            iniciarProgressBar();
+
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("http://10.0.2.2:8080/")
                     .addConverterFactory(GsonConverterFactory.create())
@@ -64,7 +72,9 @@ public class LoginActivityUI extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             String token = response.headers().get("Authorization").substring(7);
                             salvarToken(token);
+                            encerrarProgressBar();
                         } else {
+                            encerrarProgressBar();
                             Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -103,5 +113,27 @@ public class LoginActivityUI extends AppCompatActivity {
           SharedPreferences preferences = getActivity().getSharedPreferences("MY_APP",Context.MODE_PRIVATE);
          String retrivedToken  = preferences.getString("TOKEN",null);//second parameter default value.
         */
+    }
+
+    public void iniciarProgressBar(){
+        progressBarLogin.setVisibility(View.VISIBLE);
+        ObjectAnimator animation = ObjectAnimator.ofInt(progressBarLogin, "progress", 0, 300);
+        animation.setDuration(3000);
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.start();
+    }
+
+    private void encerrarProgressBar() {
+        sleepThred();
+        progressBarLogin.clearAnimation();
+        progressBarLogin.setVisibility(View.GONE);
+    }
+
+    private void sleepThred() {
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
