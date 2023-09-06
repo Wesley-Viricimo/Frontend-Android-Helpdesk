@@ -124,16 +124,7 @@ public class LoginActivityUI extends AppCompatActivity {
     }
 
     private void encerrarProgressBar() {
-        sleepThred();
         progressBarLogin.clearAnimation();
         progressBarLogin.setVisibility(View.GONE);
-    }
-
-    private void sleepThred() {
-        try {
-            Thread.sleep(1000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
