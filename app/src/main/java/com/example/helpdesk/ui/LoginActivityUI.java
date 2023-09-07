@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -73,6 +74,7 @@ public class LoginActivityUI extends AppCompatActivity {
                             String token = response.headers().get("Authorization").substring(7);
                             salvarToken(token);
                             encerrarProgressBar();
+                            abrirTelaPrincipal();
                         } else {
                             encerrarProgressBar();
                             Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos", Toast.LENGTH_LONG).show();
@@ -115,7 +117,7 @@ public class LoginActivityUI extends AppCompatActivity {
         */
     }
 
-    public void iniciarProgressBar(){
+    private void iniciarProgressBar(){
         progressBarLogin.setVisibility(View.VISIBLE);
         ObjectAnimator animation = ObjectAnimator.ofInt(progressBarLogin, "progress", 0, 300);
         animation.setDuration(3000);
@@ -126,5 +128,10 @@ public class LoginActivityUI extends AppCompatActivity {
     private void encerrarProgressBar() {
         progressBarLogin.clearAnimation();
         progressBarLogin.setVisibility(View.GONE);
+    }
+
+    private void abrirTelaPrincipal(){
+        Intent intent = new Intent(this, MainActivityUI.class);
+        startActivity(intent);
     }
 }
