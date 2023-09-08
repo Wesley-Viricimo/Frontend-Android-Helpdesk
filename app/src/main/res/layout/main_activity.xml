@@ -37,9 +37,10 @@
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
+        android:background="@drawable/gradiente"
         app:menu="@menu/nav_menu"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"/>
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"/>
 
     
 

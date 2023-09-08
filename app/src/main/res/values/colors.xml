@@ -9,4 +9,5 @@
     <color name="login_text_color">#f0ffffde</color>
     <color name="login_hint">#F0A3A3A0</color>
     <color name="lavander">#8692f7</color>
+    <color name="darkblue">#0177D5</color>
 </resources>
