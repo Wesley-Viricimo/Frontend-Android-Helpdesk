@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clientes Fragment"
+        android:text="Tecnicos Fragment"
         android:textSize="30sp"
         android:layout_centerInParent="true"
         android:textColor="@color/lavander"/>
