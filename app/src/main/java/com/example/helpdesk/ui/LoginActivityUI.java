@@ -35,6 +35,10 @@ public class LoginActivityUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
+        if(!getToken().equals(null)){
+            abrirTelaPrincipal();
+        }
+
         edtEmail = findViewById(R.id.edtEmail);
         edtSenha = findViewById(R.id.edtSenha);
         btnEntrar = findViewById(R.id.btnEntrar);
@@ -133,5 +137,11 @@ public class LoginActivityUI extends AppCompatActivity {
     private void abrirTelaPrincipal(){
         Intent intent = new Intent(this, MainActivityUI.class);
         startActivity(intent);
+    }
+
+    private String getToken(){
+        SharedPreferences preferences = getSharedPreferences("HELPDESK",Context.MODE_PRIVATE);
+        String token  = preferences.getString("TOKEN",null);
+        return token;
     }
 }
