@@ -1,4 +1,4 @@
-package com.example.helpdesk.ui;
+package com.example.helpdesk.ui.chamado;
 
 import android.os.Bundle;
 
@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 
 import com.example.helpdesk.R;
 
-public class ClientesFragmentUI extends Fragment {
+public class ChamadoListFragmentUI extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_clientes, container, false);
+
+        return inflater.inflate(R.layout.fragment_chamado_list, container, false);
     }
 }

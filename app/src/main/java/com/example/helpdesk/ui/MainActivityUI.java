@@ -15,6 +15,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.helpdesk.R;
+import com.example.helpdesk.ui.chamado.ChamadoListFragmentUI;
+import com.example.helpdesk.ui.cliente.ClientesListFragmentUI;
+import com.example.helpdesk.ui.tecnicos.TecnicosListFragmentUI;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivityUI extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -55,11 +58,15 @@ public class MainActivityUI extends AppCompatActivity implements NavigationView.
                 break;
 
             case "Tecnicos":
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TecnicosFragmentUI()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TecnicosListFragmentUI()).commit();
                 break;
 
             case "Clientes":
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ClientesFragmentUI()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ClientesListFragmentUI()).commit();
+                break;
+
+            case "Chamados":
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChamadoListFragmentUI()).commit();
                 break;
 
             case "Github":
