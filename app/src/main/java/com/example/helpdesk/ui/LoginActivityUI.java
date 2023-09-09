@@ -30,12 +30,17 @@ public class LoginActivityUI extends AppCompatActivity {
     private Button btnEntrar;
     private ProgressBar progressBarLogin;
 
+    private SharedPreferences preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        if(!getToken().equals(null)){
+        preferences = getSharedPreferences("HELPDESK",Context.MODE_PRIVATE);
+        String token = preferences.getString("TOKEN",null);
+
+        if(token != null){
             abrirTelaPrincipal();
         }
 
@@ -112,7 +117,7 @@ public class LoginActivityUI extends AppCompatActivity {
     }
 
     private void salvarToken(String token) {
-        SharedPreferences preferences = getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
+        preferences = getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
         preferences.edit().putString("TOKEN",token).apply();
 
          /*Retrieve token wherever necessary
@@ -139,9 +144,4 @@ public class LoginActivityUI extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private String getToken(){
-        SharedPreferences preferences = getSharedPreferences("HELPDESK",Context.MODE_PRIVATE);
-        String token  = preferences.getString("TOKEN",null);
-        return token;
-    }
 }

@@ -20,7 +20,7 @@
             android:layout_height="56dp"
             android:id="@+id/toobarMainActivity"
             android:elevation="4dp"
-            android:background="@color/lavander"
+            android:background="@color/nav_header"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
@@ -37,7 +37,7 @@
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
-        android:background="@drawable/gradiente"
+        android:background="@color/nav_header"
         app:menu="@menu/nav_menu"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"/>
