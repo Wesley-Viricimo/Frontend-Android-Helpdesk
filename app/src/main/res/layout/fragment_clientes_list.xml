@@ -90,7 +90,7 @@
                 android:id="@+id/rvClientesList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/pessoa"/>
+                tools:listitem="@layout/adapter_pessoa"/>
 
         </LinearLayout>
 
