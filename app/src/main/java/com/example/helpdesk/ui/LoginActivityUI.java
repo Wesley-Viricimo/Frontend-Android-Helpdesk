@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.helpdesk.R;
 import com.example.helpdesk.api.ApiService;
+import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Credenciais;
 
 import retrofit2.Call;
@@ -29,6 +30,8 @@ public class LoginActivityUI extends AppCompatActivity {
     private EditText edtSenha;
     private Button btnEntrar;
     private ProgressBar progressBarLogin;
+
+    private ApiService apiService;
 
     private SharedPreferences preferences;
 
@@ -65,12 +68,7 @@ public class LoginActivityUI extends AppCompatActivity {
         if (validaEmail(email) && validaSenha(senha)) {
             iniciarProgressBar();
 
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.0.2.2:8080/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            ApiService apiService = retrofit.create(ApiService.class);
+            apiService = ApiClient.clientLogin().create(ApiService.class);
             Credenciais credenciais = new Credenciais(email, senha);
 
             Call<Void> call = apiService.validarUsuario(credenciais);

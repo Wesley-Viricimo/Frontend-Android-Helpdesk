@@ -53,6 +53,7 @@
 
                 <SearchView
                     android:id="@+id/svBuscarCliente"
+                    android:iconifiedByDefault="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -91,12 +92,18 @@
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/pessoa"/>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <ProgressBar
                 android:id="@+id/pbClientesList"
                 style="?attr/progressBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 android:background="@android:color/transparent"
                 android:visibility="gone"/>
 
