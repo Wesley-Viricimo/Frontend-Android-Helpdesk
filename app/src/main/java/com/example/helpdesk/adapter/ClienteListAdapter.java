@@ -1,6 +1,5 @@
 package com.example.helpdesk.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.helpdesk.R;
 import com.example.helpdesk.model.Cliente;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.ClienteListViewHolder> {
@@ -32,7 +30,6 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ClienteListViewHolder holder, int position) {
-        //TODO FALTA MANIPULAR A IMAGEM
         Cliente cliente = listaClientes.get(position);
         holder.tvId.setText("ID: " + Integer.toString(cliente.getId()));
         holder.tvNome.setText("Nome: " + cliente.getNome());
@@ -57,7 +54,6 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
         public ClienteListViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivPessoaImage = (ImageView) itemView.findViewById(R.id.ivPessoaImage);
             tvId = (TextView) itemView.findViewById(R.id.tvId);
             tvNome = (TextView) itemView.findViewById(R.id.tvNome);
             tvEmail = (TextView) itemView.findViewById(R.id.tvEmail);
