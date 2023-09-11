@@ -119,11 +119,6 @@ public class LoginActivityUI extends AppCompatActivity {
     private void salvarToken(String token) {
         preferences = getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
         preferences.edit().putString("TOKEN", token).apply();
-
-         /*Retrieve token wherever necessary
-          SharedPreferences preferences = getActivity().getSharedPreferences("MY_APP",Context.MODE_PRIVATE);
-         String retrivedToken  = preferences.getString("TOKEN",null);//second parameter default value.
-        */
     }
 
     private void iniciarProgressBar() {

@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,6 +54,13 @@ public class ClientesListFragmentUI extends Fragment {
         recyclerView = clientesListFragment.findViewById(R.id.rvClientesList);
         progressBar = clientesListFragment.findViewById(R.id.pbClientesList);
 
+        btnCadastrarCliente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirFragmentCadastroCliente();
+            }
+        });
+
         iniciarProgressBar();
         this.carregarClientes();
 
@@ -90,6 +99,12 @@ public class ClientesListFragmentUI extends Fragment {
                 t.printStackTrace();
             }
         });
+    }
+
+    private void abrirFragmentCadastroCliente() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, new ClientesCreateFragmentUI()).commit();
     }
 
     private String getToken(){
