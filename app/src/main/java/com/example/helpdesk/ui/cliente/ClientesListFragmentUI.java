@@ -1,5 +1,6 @@
 package com.example.helpdesk.ui.cliente;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
@@ -21,9 +23,7 @@ import com.example.helpdesk.api.ApiService;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Cliente;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -52,6 +52,7 @@ public class ClientesListFragmentUI extends Fragment {
         recyclerView = clientesListFragment.findViewById(R.id.rvClientesList);
         progressBar = clientesListFragment.findViewById(R.id.pbClientesList);
 
+        iniciarProgressBar();
         this.carregarClientes();
 
         return clientesListFragment;
@@ -79,6 +80,8 @@ public class ClientesListFragmentUI extends Fragment {
                         listClientes.add(cliente);
                     }
                     popularRecyclerView();
+                    sleepThread();
+                    encerrarProgressBar();
                 }
             }
 
@@ -101,6 +104,27 @@ public class ClientesListFragmentUI extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void iniciarProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+        ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, 300);
+        animation.setDuration(3000);
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.start();
+    }
+
+    private void encerrarProgressBar() {
+        progressBar.clearAnimation();
+        progressBar.setVisibility(View.GONE);
+    }
+
+    private void sleepThread() {
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

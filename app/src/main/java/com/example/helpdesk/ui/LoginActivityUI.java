@@ -40,10 +40,10 @@ public class LoginActivityUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        preferences = getSharedPreferences("HELPDESK",Context.MODE_PRIVATE);
-        String token = preferences.getString("TOKEN",null);
+        preferences = getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
+        String token = preferences.getString("TOKEN", null);
 
-        if(token != null){
+        if (token != null) {
             abrirTelaPrincipal();
         }
 
@@ -80,6 +80,7 @@ public class LoginActivityUI extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             String token = response.headers().get("Authorization").substring(7);
                             salvarToken(token);
+                            sleepThread();
                             encerrarProgressBar();
                             abrirTelaPrincipal();
                         } else {
@@ -87,6 +88,7 @@ public class LoginActivityUI extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos", Toast.LENGTH_LONG).show();
                         }
                     }
+
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
                         t.printStackTrace();
@@ -116,7 +118,7 @@ public class LoginActivityUI extends AppCompatActivity {
 
     private void salvarToken(String token) {
         preferences = getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
-        preferences.edit().putString("TOKEN",token).apply();
+        preferences.edit().putString("TOKEN", token).apply();
 
          /*Retrieve token wherever necessary
           SharedPreferences preferences = getActivity().getSharedPreferences("MY_APP",Context.MODE_PRIVATE);
@@ -124,7 +126,7 @@ public class LoginActivityUI extends AppCompatActivity {
         */
     }
 
-    private void iniciarProgressBar(){
+    private void iniciarProgressBar() {
         progressBarLogin.setVisibility(View.VISIBLE);
         ObjectAnimator animation = ObjectAnimator.ofInt(progressBarLogin, "progress", 0, 300);
         animation.setDuration(3000);
@@ -137,9 +139,18 @@ public class LoginActivityUI extends AppCompatActivity {
         progressBarLogin.setVisibility(View.GONE);
     }
 
-    private void abrirTelaPrincipal(){
+    private void abrirTelaPrincipal() {
         Intent intent = new Intent(this, MainActivityUI.class);
         startActivity(intent);
     }
+
+    private void sleepThread() {
+        try {
+            Thread.sleep(1500);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
