@@ -12,4 +12,5 @@
     <color name="lightblue">#1B98FA</color>
     <color name="toobar_background">#131313</color>
     <color name="nav_header">#383737</color>
+    <color name="fragments">#EDE8E8</color>
 </resources>

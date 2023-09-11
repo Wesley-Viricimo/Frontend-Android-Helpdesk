@@ -31,8 +31,9 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ClienteListViewHolder holder, int position) {
         Cliente cliente = listaClientes.get(position);
-        holder.tvId.setText("ID: " + Integer.toString(cliente.getId()));
+        holder.tvId.setText("Id: " + Integer.toString(cliente.getId()));
         holder.tvNome.setText("Nome: " + cliente.getNome());
+        holder.tvCpf.setText("CPF: " + formataCPF(cliente.getCpf()));
         holder.tvEmail.setText("Email: " + cliente.getEmail());
         holder.tvDataCadastro.setText("Cadastrado em: " + cliente.getDataCriacao());
 
@@ -48,6 +49,7 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
         public ImageView ivPessoaImage;
         public TextView tvId;
         public TextView tvNome;
+        public TextView tvCpf;
         public TextView tvEmail;
         public TextView tvDataCadastro;
 
@@ -56,8 +58,14 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
 
             tvId = (TextView) itemView.findViewById(R.id.tvId);
             tvNome = (TextView) itemView.findViewById(R.id.tvNome);
+            tvCpf = (TextView) itemView.findViewById(R.id.tvCpf);
             tvEmail = (TextView) itemView.findViewById(R.id.tvEmail);
             tvDataCadastro = (TextView) itemView.findViewById(R.id.tvDataCadastro);
         }
+    }
+
+    private static String formataCPF(String CPF) {
+        return(CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
+                CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
     }
 }
