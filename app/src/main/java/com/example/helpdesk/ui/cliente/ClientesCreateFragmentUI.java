@@ -94,14 +94,14 @@ public class ClientesCreateFragmentUI extends Fragment {
 
             Cliente cliente = new Cliente(nome, cpfFormatado, email, senha, perfis);
 
-            Call<Cliente> call = apiService.cadastrarCliente(cliente);
+            Call<Void> call = apiService.cadastrarCliente(cliente);
 
             try {
-                call.enqueue(new Callback<Cliente>() {
+                call.enqueue(new Callback<Void>() {
                     @Override
-                    public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+                    public void onResponse(Call<Void> call, Response<Void> response) {
                         if(response.isSuccessful()) {
-                            Toast.makeText(getContext(), "Cliente cadastrado com sucesso!", Toast.LENGTH_SHORT);
+                            Toast.makeText(getContext(), "Cliente cadastrado com sucesso!", Toast.LENGTH_LONG);
                             sleepThread();
                             encerrarProgressBar();
                             abrirFragmentClientesList();
@@ -114,7 +114,7 @@ public class ClientesCreateFragmentUI extends Fragment {
                     }
 
                     @Override
-                    public void onFailure(Call<Cliente> call, Throwable t) {
+                    public void onFailure(Call<Void> call, Throwable t) {
                         t.printStackTrace();
                     }
                 });

@@ -20,5 +20,5 @@ public interface ApiService {
     Call<List<Cliente>> getClientes();
 
     @POST("clientes")
-    Call<Cliente> cadastrarCliente(@Body Cliente cliente);
+    Call<Void> cadastrarCliente(@Body Cliente cliente);
 }
