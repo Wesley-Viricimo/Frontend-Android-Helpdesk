@@ -18,4 +18,7 @@ public interface ApiService {
 
     @GET("clientes")
     Call<List<Cliente>> getClientes();
+
+    @POST("clientes")
+    Call<Cliente> cadastrarCliente(@Body Cliente cliente);
 }

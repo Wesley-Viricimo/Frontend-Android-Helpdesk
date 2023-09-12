@@ -22,6 +22,15 @@ public class Cliente {
         this.dataCriacao = dataCriacao;
     }
 
+    public Cliente(String nome, String cpf, String email, String senha, List<String> perfis) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.senha = senha;
+        this.perfis = perfis;
+        this.dataCriacao = dataCriacao;
+    }
+
     public Integer getId() {
         return id;
     }
