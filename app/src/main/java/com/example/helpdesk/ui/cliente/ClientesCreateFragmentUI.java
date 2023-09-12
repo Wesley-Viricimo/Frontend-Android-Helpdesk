@@ -101,15 +101,10 @@ public class ClientesCreateFragmentUI extends Fragment {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if(response.isSuccessful()) {
-                            Toast.makeText(getContext(), "Cliente cadastrado com sucesso!", Toast.LENGTH_LONG);
-                            sleepThread();
-                            encerrarProgressBar();
-                            abrirFragmentClientesList();
+                            requisicaoComSucesso();
                         } else {
-                            String erro = call.request().body().toString();
-                            Toast.makeText(getContext(), erro, Toast.LENGTH_SHORT);
-                            sleepThread();
-                            encerrarProgressBar();
+                            String erro = response.errorBody().toString();
+                            requisicaoComErro(erro);
                         }
                     }
 
@@ -123,6 +118,19 @@ public class ClientesCreateFragmentUI extends Fragment {
             }
         }
 
+    }
+
+    private void requisicaoComSucesso(){
+        sleepThread();
+        encerrarProgressBar();
+        Toast.makeText(getContext(), "Cliente cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+        abrirFragmentClientesList();
+    }
+
+    private void requisicaoComErro(String erro){
+        sleepThread();
+        encerrarProgressBar();
+        Toast.makeText(getActivity(), erro, Toast.LENGTH_SHORT).show();
     }
 
     private void sleepThread() {

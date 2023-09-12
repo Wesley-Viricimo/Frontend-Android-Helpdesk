@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 
@@ -35,7 +36,7 @@ import retrofit2.Response;
 public class ClientesListFragmentUI extends Fragment {
     private Button btnCadastrarCliente;
     private Button btnBuscarCliente;
-    private SearchView svBuscarCliente;
+    private EditText edtBuscarCliente;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private List<Cliente> listClientes = new ArrayList<>();
@@ -50,7 +51,7 @@ public class ClientesListFragmentUI extends Fragment {
 
         btnCadastrarCliente = clientesListFragment.findViewById(R.id.btnCadastrarCliente);
         btnBuscarCliente = clientesListFragment.findViewById(R.id.btnBuscar);
-        svBuscarCliente = clientesListFragment.findViewById(R.id.svBuscarCliente);
+        edtBuscarCliente = clientesListFragment.findViewById(R.id.edtBuscarCliente);
         recyclerView = clientesListFragment.findViewById(R.id.rvClientesList);
         progressBar = clientesListFragment.findViewById(R.id.pbClientesList);
 

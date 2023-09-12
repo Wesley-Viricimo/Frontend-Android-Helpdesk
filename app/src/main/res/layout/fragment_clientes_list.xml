@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fragments"
+    android:background="@color/login_background"
     tools:context=".ui.cliente.ClientesListFragmentUI">
 
     <LinearLayout
@@ -18,14 +18,15 @@
             android:layout_marginTop="10dp"
             android:text="Listagem de clientes"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
@@ -52,9 +53,15 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <SearchView
-                    android:id="@+id/svBuscarCliente"
+                <EditText
+                    android:id="@+id/edtBuscarCliente"
                     android:iconifiedByDefault="true"
+                    android:hint="Buscar Cliente"
+                    android:background="@drawable/container_edit_text_login"
+                    android:backgroundTint="@color/login_input_text"
+                    android:textColor="@color/login_text_color"
+                    android:textColorHint="@color/login_hint"
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
