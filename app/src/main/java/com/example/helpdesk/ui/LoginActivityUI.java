@@ -80,7 +80,7 @@ public class LoginActivityUI extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
-                            String token = response.headers().get("Authorization").substring(7);
+                            String token = response.headers().get("Authorization");
                             salvarToken(token);
                             finalizarRequisição();
                             abrirTelaPrincipal();
