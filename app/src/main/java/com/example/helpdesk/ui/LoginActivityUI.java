@@ -19,6 +19,8 @@ import com.example.helpdesk.api.ApiService;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Credenciais;
 
+import org.json.JSONObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -80,12 +82,17 @@ public class LoginActivityUI extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             String token = response.headers().get("Authorization").substring(7);
                             salvarToken(token);
-                            sleepThread();
-                            encerrarProgressBar();
+                            finalizarRequisição();
                             abrirTelaPrincipal();
                         } else {
-                            encerrarProgressBar();
-                            Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos", Toast.LENGTH_LONG).show();
+                            try {
+                                JSONObject jObjError = new JSONObject(response.errorBody().string());
+                                String erro = jObjError.getString("message");
+                                finalizarRequisição();
+                                Toast.makeText(getApplicationContext(), erro, Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
 
@@ -98,6 +105,11 @@ public class LoginActivityUI extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void finalizarRequisição() {
+        sleepThread();
+        encerrarProgressBar();
     }
 
     private boolean validaEmail(String email) {
