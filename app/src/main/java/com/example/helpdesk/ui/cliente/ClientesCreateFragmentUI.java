@@ -24,6 +24,9 @@ import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.util.MaskEditUtil;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,8 +106,13 @@ public class ClientesCreateFragmentUI extends Fragment {
                         if(response.isSuccessful()) {
                             requisicaoComSucesso();
                         } else {
-                            String erro = response.errorBody().toString();
-                            requisicaoComErro(erro);
+                            try {
+                                JSONObject jObjError = new JSONObject(response.errorBody().string());
+                                String erro = jObjError.getString("message");
+                                requisicaoComErro(erro);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
 
