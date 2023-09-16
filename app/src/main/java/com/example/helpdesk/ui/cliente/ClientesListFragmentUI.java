@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helpdesk.R;
 import com.example.helpdesk.adapter.ClienteListAdapter;
-import com.example.helpdesk.api.service.ApiServiceClientes;
+import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Cliente;
 
@@ -38,7 +38,7 @@ public class ClientesListFragmentUI extends Fragment {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private List<Cliente> listClientes = new ArrayList<>();
-    private ApiServiceClientes apiServiceClientes;
+    private ApiService apiService;
     private SharedPreferences preferences;
 
     @Override
@@ -67,8 +67,8 @@ public class ClientesListFragmentUI extends Fragment {
     }
 
     private void carregarClientes() {
-        apiServiceClientes = ApiClient.getClient(getToken()).create(ApiServiceClientes.class);
-        Call<List<Cliente>> call = apiServiceClientes.getClientes();
+        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+        Call<List<Cliente>> call = apiService.getClientes();
 
         call.enqueue(new Callback<List<Cliente>>() {
             @Override

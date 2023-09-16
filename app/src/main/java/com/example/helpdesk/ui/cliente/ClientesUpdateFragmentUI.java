@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.helpdesk.R;
-import com.example.helpdesk.api.service.ApiServiceClientes;
+import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.util.MaskEditUtil;
@@ -37,7 +37,7 @@ public class ClientesUpdateFragmentUI extends Fragment {
     private Button btnUpdateCliAtualizar;
     private Button btnUpdateCliCancelar;
     private ProgressBar pbUpdateCli;
-    private ApiServiceClientes apiServiceClientes;
+    private ApiService apiService;
     private SharedPreferences preferences;
 
 
@@ -80,8 +80,8 @@ public class ClientesUpdateFragmentUI extends Fragment {
     }
 
     private void carregarCliente(String idCliente) {
-        apiServiceClientes = ApiClient.getClient(getToken()).create(ApiServiceClientes.class);
-        Call<Cliente> call = apiServiceClientes.getCliente(idCliente);
+        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+        Call<Cliente> call = apiService.getCliente(idCliente);
 
         call.enqueue(new Callback<Cliente>() {
             @Override
@@ -116,8 +116,8 @@ public class ClientesUpdateFragmentUI extends Fragment {
 
         if (validaCampos(nome, cpf, email, senha)) {
             Cliente cliente = new Cliente(nome, cpf, email, senha);
-            apiServiceClientes = ApiClient.getClient(getToken()).create(ApiServiceClientes.class);
-            Call<Void> call = apiServiceClientes.putCliente(idCliente, cliente);
+            apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+            Call<Void> call = apiService.putCliente(idCliente, cliente);
 
             call.enqueue(new Callback<Void>() {
                 @Override

@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
-public interface ApiServiceClientes {
+public interface ApiService {
 
     @POST("login")
     Call<Void> validarUsuario(@Body Credenciais credenciais);
