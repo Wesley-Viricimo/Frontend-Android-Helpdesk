@@ -74,9 +74,9 @@ public class ClientesListFragmentUI extends Fragment {
             @Override
             public void onResponse(Call<List<Cliente>> call, Response<List<Cliente>> response) {
                 if(response.isSuccessful()) {
-                    List<Cliente> listaClienteResponse = response.body();
+                    List<Cliente> listaClientesResponse = response.body();
 
-                    for (Cliente cli : listaClienteResponse) {
+                    for (Cliente cli : listaClientesResponse) {
                         Integer id = cli.getId();
                         String nome = cli.getNome();
                         String cpf = cli.getCpf();

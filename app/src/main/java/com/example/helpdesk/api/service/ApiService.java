@@ -2,6 +2,7 @@ package com.example.helpdesk.api.service;
 
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.model.Credenciais;
+import com.example.helpdesk.model.Tecnico;
 
 import java.util.List;
 
@@ -32,4 +33,7 @@ public interface ApiService {
 
     @POST("clientes")
     Call<Void> cadastrarCliente(@Body Cliente cliente);
+
+    @GET("tecnicos")
+    Call<List<Tecnico>> getTecnicos();
 }

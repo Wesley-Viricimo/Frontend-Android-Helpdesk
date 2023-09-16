@@ -1,6 +1,7 @@
 package com.example.helpdesk.ui.tecnicos;
 
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -16,11 +17,17 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.example.helpdesk.R;
+import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.model.Cliente;
+import com.example.helpdesk.model.Tecnico;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TecnicosListFragmentUI extends Fragment {
     private Button btnCadastrarTecnico;
@@ -66,7 +73,41 @@ public class TecnicosListFragmentUI extends Fragment {
     }
 
     private void carregarTecnicos() {
+        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+        Call<List<Tecnico>> call = apiService.getTecnicos();
 
+        call.enqueue(new Callback<List<Tecnico>>() {
+            @Override
+            public void onResponse(Call<List<Tecnico>> call, Response<List<Tecnico>> response) {
+                if(response.isSuccessful()) {
+                    List<Tecnico> listaTecnicosResponse = response.body();
+
+                    for (Tecnico tec : listaTecnicosResponse) {
+                        Integer id = tec.getId();
+                        String nome = tec.getNome();
+                        String cpf = tec.getCpf();
+                        String email = tec.getEmail();
+                        String senha = tec.getSenha();
+                        List<String> perfis = tec.getPerfis();
+                        String dataCriacao = tec.getDataCriacao();
+                        Tecnico tecnico = new Tecnico(id, nome, cpf, email, senha, perfis, dataCriacao);
+                        listaTecnicosResponse.add(tecnico);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Tecnico>> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    private String getToken(){
+        preferences = getActivity().getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
+        String token = preferences.getString("TOKEN",null);
+        return token;
     }
 
 }
