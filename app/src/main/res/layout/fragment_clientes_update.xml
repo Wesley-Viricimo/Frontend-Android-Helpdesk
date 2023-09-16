@@ -3,12 +3,134 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/login_background"
     tools:context=".ui.cliente.ClientesUpdateFragmentUI">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Atualização de cliente"
+            android:fontFamily="@font/open_sans"
+            android:textAllCaps="true"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/edtUpdateCliNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            android:background="@drawable/container_edit_text_login"
+            android:backgroundTint="@color/login_input_text"
+            android:textColor="@color/login_text_color"
+            android:textColorHint="@color/login_hint"
+            android:padding="15dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="10dp"/>
+
+        <EditText
+            android:id="@+id/edtUpdateCliCpf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CPF"
+            android:background="@drawable/container_edit_text_login"
+            android:backgroundTint="@color/login_input_text"
+            android:textColor="@color/login_text_color"
+            android:textColorHint="@color/login_hint"
+            android:padding="15dp"
+            android:inputType="number"
+            android:maxLines="1"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"/>
+
+        <EditText
+            android:id="@+id/edtUpdateCliEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="E-mail"
+            android:background="@drawable/container_edit_text_login"
+            android:backgroundTint="@color/login_input_text"
+            android:textColor="@color/login_text_color"
+            android:textColorHint="@color/login_hint"
+            android:padding="15dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"/>
+
+        <EditText
+            android:id="@+id/edtUpdateCliSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Senha"
+            android:background="@drawable/container_edit_text_login"
+            android:backgroundTint="@color/login_input_text"
+            android:textColor="@color/login_text_color"
+            android:textColorHint="@color/login_hint"
+            android:padding="15dp"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"/>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnUpdateCliAtualizar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/botao_cadastro_custom"
+                android:text="Atualizar"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnUpdateCliCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/botao_cancelar_custom"
+                android:text="Cancelar"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/pbUpdateCli"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>
