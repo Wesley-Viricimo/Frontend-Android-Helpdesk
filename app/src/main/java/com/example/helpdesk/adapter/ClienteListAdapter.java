@@ -9,11 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.helpdesk.R;
 import com.example.helpdesk.model.Cliente;
+import com.example.helpdesk.ui.cliente.ClientesDeleteFragmentUI;
+import com.example.helpdesk.ui.cliente.ClientesUpdateFragmentUI;
 
 import java.util.List;
 
@@ -48,14 +52,14 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
         holder.btnAlterarCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cliente.getId();
+                abrirClientesUpdate(view, cliente.getId().toString());
             }
         });
 
         holder.btnExcluirCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cliente.getId();
+                abrirClientesDelete(view, cliente.getId().toString());
             }
         });
 
@@ -94,5 +98,17 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
     private static String formataCPF(String CPF) {
         return(CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
                 CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
+    }
+
+    private void abrirClientesUpdate(View view, String idCliente) {
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        Fragment fragmentClientesUpdate = new ClientesUpdateFragmentUI();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentClientesUpdate).addToBackStack(null).commit();
+    }
+
+    private void abrirClientesDelete(View view, String idCliente) {
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        Fragment fragmentClientesDelete = new ClientesDeleteFragmentUI();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentClientesDelete).addToBackStack(null).commit();
     }
 }
