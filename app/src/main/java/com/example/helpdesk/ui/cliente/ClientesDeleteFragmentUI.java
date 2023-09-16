@@ -19,7 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.helpdesk.R;
-import com.example.helpdesk.api.ApiService;
+import com.example.helpdesk.api.service.ApiServiceClientes;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.util.MaskEditUtil;
@@ -39,7 +39,7 @@ public class ClientesDeleteFragmentUI extends Fragment {
     private Button btnDeleteCliDeletar;
     private Button btnDeleteCliCancelar;
     private ProgressBar pbDeleteCli;
-    private ApiService apiService;
+    private ApiServiceClientes apiServiceClientes;
     private SharedPreferences preferences;
 
     @Override
@@ -81,8 +81,8 @@ public class ClientesDeleteFragmentUI extends Fragment {
     }
 
     private void carregarCliente(String idCliente) {
-        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
-        Call<Cliente> call = apiService.getCliente(idCliente);
+        apiServiceClientes = ApiClient.getClient(getToken()).create(ApiServiceClientes.class);
+        Call<Cliente> call = apiServiceClientes.getCliente(idCliente);
 
         call.enqueue(new Callback<Cliente>() {
             @Override
@@ -110,8 +110,8 @@ public class ClientesDeleteFragmentUI extends Fragment {
     private void deletarCliente(String idCliente) {
         iniciarProgressBar();
 
-        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
-        Call<Void> call = apiService.deleteCliente(idCliente);
+        apiServiceClientes = ApiClient.getClient(getToken()).create(ApiServiceClientes.class);
+        Call<Void> call = apiServiceClientes.deleteCliente(idCliente);
 
         call.enqueue(new Callback<Void>() {
             @Override

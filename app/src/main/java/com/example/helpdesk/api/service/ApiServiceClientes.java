@@ -1,4 +1,4 @@
-package com.example.helpdesk.api;
+package com.example.helpdesk.api.service;
 
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.model.Credenciais;
@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
-public interface ApiService {
+public interface ApiServiceClientes {
 
     @POST("login")
     Call<Void> validarUsuario(@Body Credenciais credenciais);

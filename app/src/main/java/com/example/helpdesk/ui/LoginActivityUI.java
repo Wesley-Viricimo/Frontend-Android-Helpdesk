@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.helpdesk.R;
-import com.example.helpdesk.api.ApiService;
+import com.example.helpdesk.api.service.ApiServiceClientes;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Credenciais;
 
@@ -31,7 +31,7 @@ public class LoginActivityUI extends AppCompatActivity {
     private Button btnEntrar;
     private ProgressBar progressBarLogin;
 
-    private ApiService apiService;
+    private ApiServiceClientes apiServiceClientes;
 
     private SharedPreferences preferences;
 
@@ -68,10 +68,10 @@ public class LoginActivityUI extends AppCompatActivity {
         if (validaEmail(email) && validaSenha(senha)) {
             iniciarProgressBar();
 
-            apiService = ApiClient.clientLogin().create(ApiService.class);
+            apiServiceClientes = ApiClient.clientLogin().create(ApiServiceClientes.class);
             Credenciais credenciais = new Credenciais(email, senha);
 
-            Call<Void> call = apiService.validarUsuario(credenciais);
+            Call<Void> call = apiServiceClientes.validarUsuario(credenciais);
 
             try {
                 call.enqueue(new Callback<Void>() {

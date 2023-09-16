@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.helpdesk.R;
-import com.example.helpdesk.api.ApiService;
+import com.example.helpdesk.api.service.ApiServiceClientes;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.util.MaskEditUtil;
@@ -42,7 +42,7 @@ public class ClientesCreateFragmentUI extends Fragment {
     private Button btnCadCliCadastro;
     private Button btnCadCliCancelar;
     private ProgressBar pbCadCli;
-    private ApiService apiService;
+    private ApiServiceClientes apiServiceClientes;
 
     private SharedPreferences preferences;
 
@@ -91,11 +91,11 @@ public class ClientesCreateFragmentUI extends Fragment {
             perfis.add("1");
             String cpfFormatado = cpf.replaceAll("[^0-9]", "");
 
-            apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+            apiServiceClientes = ApiClient.getClient(getToken()).create(ApiServiceClientes.class);
 
             Cliente cliente = new Cliente(nome, cpfFormatado, email, senha, perfis);
 
-            Call<Void> call = apiService.cadastrarCliente(cliente);
+            Call<Void> call = apiServiceClientes.cadastrarCliente(cliente);
 
             try {
                 call.enqueue(new Callback<Void>() {
