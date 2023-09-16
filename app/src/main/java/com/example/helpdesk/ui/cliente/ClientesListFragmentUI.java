@@ -48,7 +48,7 @@ public class ClientesListFragmentUI extends Fragment {
         View clientesListFragment = inflater.inflate(R.layout.fragment_clientes_list, container, false);
 
         btnCadastrarCliente = clientesListFragment.findViewById(R.id.btnCadastrarCliente);
-        btnBuscarCliente = clientesListFragment.findViewById(R.id.btnBuscar);
+        btnBuscarCliente = clientesListFragment.findViewById(R.id.btnBuscarCliente);
         edtBuscarCliente = clientesListFragment.findViewById(R.id.edtBuscarCliente);
         recyclerView = clientesListFragment.findViewById(R.id.rvClientesList);
         progressBar = clientesListFragment.findViewById(R.id.pbClientesList);
