@@ -1,0 +1,112 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.helpdesk"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="25"
+8-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:6:5-79
+12-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:6:22-76
+13
+14    <permission
+14-->[androidx.core:core:1.9.0] C:\Users\wesle\.gradle\caches\transforms-3\55dedc70b95a473650eda30d4efd0f99\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+15        android:name="com.example.helpdesk.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+15-->[androidx.core:core:1.9.0] C:\Users\wesle\.gradle\caches\transforms-3\55dedc70b95a473650eda30d4efd0f99\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+16        android:protectionLevel="signature" />
+16-->[androidx.core:core:1.9.0] C:\Users\wesle\.gradle\caches\transforms-3\55dedc70b95a473650eda30d4efd0f99\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+17
+18    <uses-permission android:name="com.example.helpdesk.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+18-->[androidx.core:core:1.9.0] C:\Users\wesle\.gradle\caches\transforms-3\55dedc70b95a473650eda30d4efd0f99\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.9.0] C:\Users\wesle\.gradle\caches\transforms-3\55dedc70b95a473650eda30d4efd0f99\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+19
+20    <application
+20-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:8:5-35:19
+21        android:allowBackup="true"
+21-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:9:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.9.0] C:\Users\wesle\.gradle\caches\transforms-3\55dedc70b95a473650eda30d4efd0f99\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+23        android:dataExtractionRules="@xml/data_extraction_rules"
+23-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:10:9-65
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:fullBackupContent="@xml/backup_rules"
+26-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:11:9-54
+27        android:icon="@mipmap/ic_launcher"
+27-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:12:9-43
+28        android:label="@string/app_name"
+28-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:13:9-41
+29        android:roundIcon="@mipmap/ic_launcher_round"
+29-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:14:9-54
+30        android:supportsRtl="true"
+30-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:16:9-35
+31        android:testOnly="true"
+32        android:theme="@style/Theme.Helpdesk"
+32-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:17:9-46
+33        android:usesCleartextTraffic="true" >
+33-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:15:9-44
+34        <activity
+34-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:19:9-28:20
+35            android:name="com.example.helpdesk.ui.LoginActivityUI"
+35-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:20:13-47
+36            android:exported="true"
+36-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:21:13-36
+37            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+37-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:22:13-69
+38            <intent-filter>
+38-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:23:13-27:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:24:17-69
+39-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:24:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:26:17-77
+41-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:26:27-74
+42            </intent-filter>
+43        </activity>
+44        <activity
+44-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:29:9-30:71
+45            android:name="com.example.helpdesk.ui.MainActivityUI"
+45-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:29:19-52
+46            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+46-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:30:13-69
+47
+48        <meta-data
+48-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:32:9-34:57
+49            android:name="preloaded_fonts"
+49-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:33:13-43
+50            android:resource="@array/preloaded_fonts" />
+50-->C:\Users\wesle\AndroidStudioProjects\Helpdesk\app\src\main\AndroidManifest.xml:34:13-54
+51
+52        <provider
+52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wesle\.gradle\caches\transforms-3\58734ab3db9d01442ffac75a0ea2bc68\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+53            android:name="androidx.startup.InitializationProvider"
+53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wesle\.gradle\caches\transforms-3\58734ab3db9d01442ffac75a0ea2bc68\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+54            android:authorities="com.example.helpdesk.androidx-startup"
+54-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wesle\.gradle\caches\transforms-3\58734ab3db9d01442ffac75a0ea2bc68\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+55            android:exported="false" >
+55-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wesle\.gradle\caches\transforms-3\58734ab3db9d01442ffac75a0ea2bc68\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+56            <meta-data
+56-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wesle\.gradle\caches\transforms-3\58734ab3db9d01442ffac75a0ea2bc68\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+57                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+57-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wesle\.gradle\caches\transforms-3\58734ab3db9d01442ffac75a0ea2bc68\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+58                android:value="androidx.startup" />
+58-->[androidx.emoji2:emoji2:1.2.0] C:\Users\wesle\.gradle\caches\transforms-3\58734ab3db9d01442ffac75a0ea2bc68\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+59            <meta-data
+59-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\wesle\.gradle\caches\transforms-3\75d35fda4271de3dc184847093d1a2b0\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+60                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+60-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\wesle\.gradle\caches\transforms-3\75d35fda4271de3dc184847093d1a2b0\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+61                android:value="androidx.startup" />
+61-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\wesle\.gradle\caches\transforms-3\75d35fda4271de3dc184847093d1a2b0\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+62        </provider>
+63    </application>
+64
+65</manifest>

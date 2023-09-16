@@ -1,0 +1,198 @@
+[
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_container_edit_text_login.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\container_edit_text_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_gradiente.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\gradiente.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_login_activity.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\login_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_container_edit_text_cadastro.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\container_edit_text_cadastro.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_nav_github.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\nav_github.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_nav_exit.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\nav_exit.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\font_open_sans.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\font\\open_sans.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_botao_cadastro_custom.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\botao_cadastro_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\menu_nav_menu.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\menu\\nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_fragment_chamado_list.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\fragment_chamado_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_botao_custom.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\botao_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_container_login.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\container_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_nav_home.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\nav_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_headerbkg.png.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\headerbkg.png"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_nav_image.png.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\nav_image.png"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_fragment_clientes_create.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\fragment_clientes_create.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_nav_clientes.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\nav_clientes.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_container_adapter.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\container_adapter.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_fragment_tecnicos.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\fragment_tecnicos.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_nav_tecnicos.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\nav_tecnicos.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_botao_cancelar_custom.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\botao_cancelar_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_fragment_tecnicos_list.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\fragment_tecnicos_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_nav_header.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\nav_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_main_activity.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\main_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_adapter_pessoa.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\adapter_pessoa.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_pessoa.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\pessoa.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_fragment_clientes.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\fragment_clientes.xml"
+    },
+    {
+        "merged": "com.example.helpdesk.app-merged_res-28:/layout_adapter_pessoa.xml.flat",
+        "source": "com.example.helpdesk.app-main-30:/layout/adapter_pessoa.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_botao_customizado.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\botao_customizado.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_nav_chamados.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\nav_chamados.xml"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\drawable_aklogo1.png.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\drawable\\aklogo1.png"
+    },
+    {
+        "merged": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-merged_res-28:\\layout_fragment_clientes_list.xml.flat",
+        "source": "C:\\Users\\wesle\\.gradle\\daemon\\8.0\\com.example.helpdesk.app-main-30:\\layout\\fragment_clientes_list.xml"
+    }
+]
