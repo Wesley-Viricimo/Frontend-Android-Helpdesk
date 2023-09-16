@@ -115,7 +115,7 @@ public class ClientesListFragmentUI extends Fragment {
     }
 
     private void popularRecyclerView(){
-        ClienteListAdapter adapter = new ClienteListAdapter(listClientes);
+        ClienteListAdapter adapter = new ClienteListAdapter(listClientes, this.getContext());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);

@@ -1,14 +1,17 @@
 package com.example.helpdesk.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.helpdesk.R;
 import com.example.helpdesk.model.Cliente;
 
@@ -16,9 +19,11 @@ import java.util.List;
 
 public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.ClienteListViewHolder> {
     private List<Cliente> listaClientes;
+    private Context context;
 
-    public ClienteListAdapter(List<Cliente> listaClientes) {
+    public ClienteListAdapter(List<Cliente> listaClientes, Context context) {
         this.listaClientes = listaClientes;
+        this.context = context;
     }
 
     @NonNull
@@ -36,6 +41,23 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
         holder.tvCpf.setText("CPF: " + formataCPF(cliente.getCpf()));
         holder.tvEmail.setText("Email: " + cliente.getEmail());
         holder.tvDataCadastro.setText("Cadastrado em: " + cliente.getDataCriacao());
+        Glide.with(context)
+                .load(R.drawable.profile)
+                .into(holder.ivPessoaImage);
+
+        holder.btnAlterarCliente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cliente.getId();
+            }
+        });
+
+        holder.btnExcluirCliente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cliente.getId();
+            }
+        });
 
     }
 
@@ -52,6 +74,8 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
         public TextView tvCpf;
         public TextView tvEmail;
         public TextView tvDataCadastro;
+        private Button btnAlterarCliente;
+        private Button btnExcluirCliente;
 
         public ClienteListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +85,9 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
             tvCpf = (TextView) itemView.findViewById(R.id.tvCpf);
             tvEmail = (TextView) itemView.findViewById(R.id.tvEmail);
             tvDataCadastro = (TextView) itemView.findViewById(R.id.tvDataCadastro);
+            btnAlterarCliente = (Button) itemView.findViewById(R.id.btnClienteListAlterar);
+            btnExcluirCliente = (Button) itemView.findViewById(R.id.btnClienteListExcluir);
+            ivPessoaImage = (ImageView) itemView.findViewById(R.id.ivPessoa);
         }
     }
 
