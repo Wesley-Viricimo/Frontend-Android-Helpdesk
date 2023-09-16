@@ -153,7 +153,7 @@ public class ClientesUpdateFragmentUI extends Fragment {
     private void requisicaoComErro(String erro) {
         sleepThread();
         encerrarProgressBar();
-        Toast.makeText(getActivity(), erro, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), erro, Toast.LENGTH_LONG).show();
     }
 
     private boolean validaCampos(String nome, String cpf, String email, String senha) {

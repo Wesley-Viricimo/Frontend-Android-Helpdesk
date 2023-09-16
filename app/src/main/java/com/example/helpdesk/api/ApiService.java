@@ -28,7 +28,7 @@ public interface ApiService {
     Call<Void> putCliente(@Path("id") String id, @Body Cliente cliente);
 
     @DELETE("clientes/{id}")
-    Call<Void> deleteCliente(@Path("id") String id, @Body Cliente cliente);
+    Call<Void> deleteCliente(@Path("id") String id);
 
     @POST("clientes")
     Call<Void> cadastrarCliente(@Body Cliente cliente);

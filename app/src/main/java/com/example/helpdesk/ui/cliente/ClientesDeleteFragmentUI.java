@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +16,15 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.helpdesk.R;
 import com.example.helpdesk.api.ApiService;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.util.MaskEditUtil;
+
+import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -58,6 +63,20 @@ public class ClientesDeleteFragmentUI extends Fragment {
 
         this.carregarCliente(idCliente);
 
+        btnDeleteCliDeletar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deletarCliente(idCliente);
+            }
+        });
+
+        btnDeleteCliCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                retornarClienteList();
+            }
+        });
+
         return clientesDeleteFragment;
     }
 
@@ -87,6 +106,55 @@ public class ClientesDeleteFragmentUI extends Fragment {
             }
         });
     }
+
+    private void deletarCliente(String idCliente) {
+        iniciarProgressBar();
+
+        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+        Call<Void> call = apiService.deleteCliente(idCliente);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()) {
+                    requisicaoComSucesso();
+                } else {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        String erro = jObjError.getString("message");
+                        requisicaoComErro(erro);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    private void requisicaoComSucesso() {
+        sleepThread();
+        encerrarProgressBar();
+        Toast.makeText(getContext(), "Cliente deletado com sucesso!", Toast.LENGTH_SHORT).show();
+        retornarClienteList();
+    }
+
+    private void requisicaoComErro(String erro) {
+        sleepThread();
+        encerrarProgressBar();
+        Toast.makeText(getActivity(), erro, Toast.LENGTH_LONG).show();
+    }
+
+    private void retornarClienteList() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, new ClientesListFragmentUI()).commit();
+    }
+
     private String getToken() {
         preferences = getActivity().getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
         String token = preferences.getString("TOKEN", null);
