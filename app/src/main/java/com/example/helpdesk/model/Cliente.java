@@ -1,6 +1,5 @@
 package com.example.helpdesk.model;
 
-import java.util.Date;
 import java.util.List;
 
 public class Cliente {

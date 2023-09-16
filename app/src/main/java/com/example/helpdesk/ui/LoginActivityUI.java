@@ -1,7 +1,5 @@
 package com.example.helpdesk.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.helpdesk.R;
 import com.example.helpdesk.api.ApiService;
 import com.example.helpdesk.api.client.ApiClient;
@@ -24,8 +24,6 @@ import org.json.JSONObject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivityUI extends AppCompatActivity {
     private EditText edtEmail;
