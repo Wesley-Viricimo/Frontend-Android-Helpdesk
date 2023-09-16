@@ -4,10 +4,6 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +12,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.helpdesk.R;
+import com.example.helpdesk.adapter.TecnicoListAdapter;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.api.service.ApiService;
-import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.model.Tecnico;
 
 import java.util.ArrayList;
@@ -35,7 +37,7 @@ public class TecnicosListFragmentUI extends Fragment {
     private EditText edtBuscarTecnico;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
-    private List<Cliente> listTecnicos = new ArrayList<>();
+    private List<Tecnico> listTecnicos = new ArrayList<>();
     private ApiService apiService;
     private SharedPreferences preferences;
 
@@ -53,7 +55,7 @@ public class TecnicosListFragmentUI extends Fragment {
         btnCadastrarTecnico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                abrirFragmentCadastroTecnico();
             }
         });
 
@@ -91,17 +93,47 @@ public class TecnicosListFragmentUI extends Fragment {
                         List<String> perfis = tec.getPerfis();
                         String dataCriacao = tec.getDataCriacao();
                         Tecnico tecnico = new Tecnico(id, nome, cpf, email, senha, perfis, dataCriacao);
-                        listaTecnicosResponse.add(tecnico);
+                        listTecnicos.add(tecnico);
                     }
+                    popularRecyclerView();
+                    sleepThread();
+                    encerrarProgressBar();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Tecnico>> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
 
+    }
+
+    private void abrirFragmentCadastroTecnico() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, new TecnicosCreateFragmentUI()).commit();
+    }
+
+    private void popularRecyclerView(){
+        TecnicoListAdapter adapter = new TecnicoListAdapter(listTecnicos, this.getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void sleepThread() {
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void encerrarProgressBar() {
+        progressBar.clearAnimation();
+        progressBar.setVisibility(View.GONE);
     }
 
     private String getToken(){
