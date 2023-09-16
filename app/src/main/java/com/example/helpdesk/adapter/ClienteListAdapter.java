@@ -1,6 +1,7 @@
 package com.example.helpdesk.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,14 +102,20 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
     }
 
     private void abrirClientesUpdate(View view, String idCliente) {
+        Bundle bundle = new Bundle();
+        bundle.putString("idCliente", idCliente);
         AppCompatActivity activity = (AppCompatActivity) view.getContext();
         Fragment fragmentClientesUpdate = new ClientesUpdateFragmentUI();
+        fragmentClientesUpdate.setArguments(bundle);
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentClientesUpdate).addToBackStack(null).commit();
     }
 
     private void abrirClientesDelete(View view, String idCliente) {
+        Bundle bundle = new Bundle();
+        bundle.putString("idCliente", idCliente);
         AppCompatActivity activity = (AppCompatActivity) view.getContext();
         Fragment fragmentClientesDelete = new ClientesDeleteFragmentUI();
+        fragmentClientesDelete.setArguments(bundle);
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentClientesDelete).addToBackStack(null).commit();
     }
 }
