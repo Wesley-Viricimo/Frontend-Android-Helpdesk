@@ -62,7 +62,6 @@ public class TecnicosListFragmentUI extends Fragment {
         iniciarProgressBar();
         this.carregarTecnicos();
 
-
         return tecnicosListFragment;
     }
 

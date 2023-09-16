@@ -60,8 +60,8 @@ public class TecnicoListAdapter extends RecyclerView.Adapter<TecnicoListAdapter.
         public TextView tvCpf;
         public TextView tvEmail;
         public TextView tvDataCadastro;
-        private Button btnAlterarPessoa;
-        private Button btnExcluirPessoa;
+        private Button btnAlterarTecnico;
+        private Button btnExcluirTecnico;
 
         public TecnicoListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,8 +71,8 @@ public class TecnicoListAdapter extends RecyclerView.Adapter<TecnicoListAdapter.
             tvCpf = (TextView) itemView.findViewById(R.id.tvCpf);
             tvEmail = (TextView) itemView.findViewById(R.id.tvEmail);
             tvDataCadastro = (TextView) itemView.findViewById(R.id.tvDataCadastro);
-            btnAlterarPessoa = (Button) itemView.findViewById(R.id.btnClienteListAlterar);
-            btnExcluirPessoa = (Button) itemView.findViewById(R.id.btnClienteListExcluir);
+            btnAlterarTecnico = (Button) itemView.findViewById(R.id.btnClienteListAlterar);
+            btnExcluirTecnico = (Button) itemView.findViewById(R.id.btnClienteListExcluir);
             ivPessoaImage = (ImageView) itemView.findViewById(R.id.ivPessoa);
         }
     }

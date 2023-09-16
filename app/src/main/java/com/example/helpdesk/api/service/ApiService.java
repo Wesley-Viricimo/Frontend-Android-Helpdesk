@@ -36,4 +36,7 @@ public interface ApiService {
 
     @GET("tecnicos")
     Call<List<Tecnico>> getTecnicos();
+
+    @POST("tecnicos")
+    Call<Void> cadastrarTecnico(@Body Tecnico tecnico);
 }
