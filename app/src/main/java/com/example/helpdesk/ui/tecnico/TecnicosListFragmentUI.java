@@ -1,4 +1,4 @@
-package com.example.helpdesk.ui.tecnicos;
+package com.example.helpdesk.ui.tecnico;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;

@@ -17,7 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.helpdesk.R;
 import com.example.helpdesk.ui.chamado.ChamadoListFragmentUI;
 import com.example.helpdesk.ui.cliente.ClientesListFragmentUI;
-import com.example.helpdesk.ui.tecnicos.TecnicosListFragmentUI;
+import com.example.helpdesk.ui.tecnico.TecnicosListFragmentUI;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivityUI extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
