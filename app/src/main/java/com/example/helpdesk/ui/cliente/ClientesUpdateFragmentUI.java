@@ -1,8 +1,6 @@
 package com.example.helpdesk.ui.cliente;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +20,8 @@ import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.util.MaskEditUtil;
+import com.example.helpdesk.util.TokenUtil;
+import com.example.helpdesk.util.ValidaCamposUtil;
 
 import org.json.JSONObject;
 
@@ -38,34 +38,36 @@ public class ClientesUpdateFragmentUI extends Fragment {
     private Button btnUpdateCliCancelar;
     private ProgressBar pbUpdateCli;
     private ApiService apiService;
-    private SharedPreferences preferences;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View clientesListFragment = inflater.inflate(R.layout.fragment_clientes_update, container, false);
+        View clientesUpdateFragment = inflater.inflate(R.layout.fragment_clientes_update, container, false);
 
         String idCliente = getArguments().getString("idCliente");
-        edtUpdateCliNome = clientesListFragment.findViewById(R.id.edtUpdateCliNome);
-        edtUpdateCliCpf = clientesListFragment.findViewById(R.id.edtUpdateCliCpf);
-        edtUpdateCliEmail = clientesListFragment.findViewById(R.id.edtUpdateCliEmail);
-        edtUpdateCliSenha = clientesListFragment.findViewById(R.id.edtUpdateCliSenha);
-        btnUpdateCliAtualizar = clientesListFragment.findViewById(R.id.btnUpdateCliAtualizar);
-        btnUpdateCliCancelar = clientesListFragment.findViewById(R.id.btnUpdateCliCancelar);
-        pbUpdateCli = clientesListFragment.findViewById(R.id.pbUpdateCli);
+        edtUpdateCliNome = clientesUpdateFragment.findViewById(R.id.edtUpdateCliNome);
+        edtUpdateCliCpf = clientesUpdateFragment.findViewById(R.id.edtUpdateCliCpf);
+        edtUpdateCliEmail = clientesUpdateFragment.findViewById(R.id.edtUpdateCliEmail);
+        edtUpdateCliSenha = clientesUpdateFragment.findViewById(R.id.edtUpdateCliSenha);
+        btnUpdateCliAtualizar = clientesUpdateFragment.findViewById(R.id.btnUpdateCliAtualizar);
+        btnUpdateCliCancelar = clientesUpdateFragment.findViewById(R.id.btnUpdateCliCancelar);
+        pbUpdateCli = clientesUpdateFragment.findViewById(R.id.pbUpdateCli);
 
         edtUpdateCliCpf.addTextChangedListener(MaskEditUtil.mask(edtUpdateCliCpf, MaskEditUtil.FORMAT_CPF));
 
+        TokenUtil tokenUtil = new TokenUtil(getActivity());
+        String token = tokenUtil.getAcessToken();
+
         componentesAtivos(false);
         iniciarProgressBar();
-        this.carregarCliente(idCliente);
+        this.carregarCliente(idCliente, token);
 
         btnUpdateCliAtualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                atualizarCliente(idCliente);
+                atualizarCliente(idCliente, token);
             }
         });
 
@@ -76,11 +78,11 @@ public class ClientesUpdateFragmentUI extends Fragment {
             }
         });
 
-        return clientesListFragment;
+        return clientesUpdateFragment;
     }
 
-    private void carregarCliente(String idCliente) {
-        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+    private void carregarCliente(String idCliente, String token) {
+        apiService = ApiClient.getClient(token).create(ApiService.class);
         Call<Cliente> call = apiService.getCliente(idCliente);
 
         call.enqueue(new Callback<Cliente>() {
@@ -106,7 +108,7 @@ public class ClientesUpdateFragmentUI extends Fragment {
         });
     }
 
-    private void atualizarCliente(String idCliente) {
+    private void atualizarCliente(String idCliente, String token) {
         iniciarProgressBar();
 
         String nome = edtUpdateCliNome.getText().toString();
@@ -114,9 +116,11 @@ public class ClientesUpdateFragmentUI extends Fragment {
         String email = edtUpdateCliEmail.getText().toString();
         String senha = edtUpdateCliSenha.getText().toString();
 
-        if (validaCampos(nome, cpf, email, senha)) {
+        ValidaCamposUtil validaCampos = new ValidaCamposUtil(getActivity());
+
+        if (validaCampos.validaCampos(nome, cpf, email, senha)) {
             Cliente cliente = new Cliente(nome, cpf, email, senha);
-            apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+            apiService = ApiClient.getClient(token).create(ApiService.class);
             Call<Void> call = apiService.putCliente(idCliente, cliente);
 
             call.enqueue(new Callback<Void>() {
@@ -140,6 +144,8 @@ public class ClientesUpdateFragmentUI extends Fragment {
                     t.printStackTrace();
                 }
             });
+        } else {
+            encerrarProgressBar();
         }
     }
 
@@ -156,55 +162,10 @@ public class ClientesUpdateFragmentUI extends Fragment {
         Toast.makeText(getActivity(), erro, Toast.LENGTH_LONG).show();
     }
 
-    private boolean validaCampos(String nome, String cpf, String email, String senha) {
-        if (validaNome(nome) && validaCpf(cpf) && validaEmail(email) && validaSenha(senha)) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean validaNome(String nome) {
-        if (!nome.equals("") && !nome.equals(null) && nome.length() > 5) {
-            return true;
-        }
-        Toast.makeText(getContext(), "Campo nome é requerido!", Toast.LENGTH_SHORT).show();
-        return false;
-    }
-
-    private boolean validaCpf(String cpf) {
-        if (!cpf.equals("") && !cpf.equals(null) && cpf.length() >= 11) {
-            return true;
-        }
-        Toast.makeText(getContext(), "Informe um CPF válido!", Toast.LENGTH_SHORT).show();
-        return false;
-    }
-
-    private boolean validaEmail(String email) {
-        if (!email.equals("") && !email.equals(null) && email.contains("@") && email.contains(".com")) {
-            return true;
-        }
-        Toast.makeText(getContext(), "Informe um e-mail válido!", Toast.LENGTH_SHORT).show();
-        return false;
-    }
-
-    private boolean validaSenha(String senha) {
-        if (!senha.equals("") && !senha.equals(null) && senha.length() > 3) {
-            return true;
-        }
-        Toast.makeText(getContext(), "Informe uma senha válida!", Toast.LENGTH_LONG).show();
-        return false;
-    }
-
     private void retornarClienteList() {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, new ClientesListFragmentUI()).commit();
-    }
-
-    private String getToken() {
-        preferences = getActivity().getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
-        String token = preferences.getString("TOKEN", null);
-        return token;
     }
 
     private void sleepThread() {

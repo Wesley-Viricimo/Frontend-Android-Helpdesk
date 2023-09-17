@@ -19,6 +19,7 @@ import com.example.helpdesk.R;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.ui.cliente.ClientesDeleteFragmentUI;
 import com.example.helpdesk.ui.cliente.ClientesUpdateFragmentUI;
+import com.example.helpdesk.util.FuncoesUtil;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
         Cliente cliente = listaClientes.get(position);
         holder.tvId.setText("Id: " + Integer.toString(cliente.getId()));
         holder.tvNome.setText("Nome: " + cliente.getNome());
-        holder.tvCpf.setText("CPF: " + formataCPF(cliente.getCpf()));
+        holder.tvCpf.setText("CPF: " + FuncoesUtil.formataCPF(cliente.getCpf()));
         holder.tvEmail.setText("Email: " + cliente.getEmail());
         holder.tvDataCadastro.setText("Cadastrado em: " + cliente.getDataCriacao());
         Glide.with(context)
@@ -94,11 +95,6 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
             btnExcluirCliente = (Button) itemView.findViewById(R.id.btnClienteListExcluir);
             ivPessoaImage = (ImageView) itemView.findViewById(R.id.ivPessoa);
         }
-    }
-
-    private static String formataCPF(String CPF) {
-        return(CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
-                CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
     }
 
     private void abrirClientesUpdate(View view, String idCliente) {

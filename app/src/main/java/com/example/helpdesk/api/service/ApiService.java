@@ -37,6 +37,15 @@ public interface ApiService {
     @GET("tecnicos")
     Call<List<Tecnico>> getTecnicos();
 
+    @GET("tecnicos/{id}")
+    Call<Tecnico> getTecnico(@Path("id") String id);
+
     @POST("tecnicos")
     Call<Void> cadastrarTecnico(@Body Tecnico tecnico);
+
+    @PUT("tecnicos/{id}")
+    Call<Void> putTecnico(@Path("id") String id, @Body Tecnico tecnico);
+
+    @DELETE("tecnicos/{id}")
+    Call<Void> deleteTecnico(@Path("id") String id);
 }

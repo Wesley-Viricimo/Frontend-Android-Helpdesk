@@ -19,6 +19,7 @@ import com.example.helpdesk.R;
 import com.example.helpdesk.model.Tecnico;
 import com.example.helpdesk.ui.tecnico.TecnicosDeleteFragmentUI;
 import com.example.helpdesk.ui.tecnico.TecnicosUpdateFragmentUI;
+import com.example.helpdesk.util.FuncoesUtil;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class TecnicoListAdapter extends RecyclerView.Adapter<TecnicoListAdapter.
         Tecnico tecnico = listaTecnicos.get(position);
         holder.tvId.setText("Id: " + Integer.toString(tecnico.getId()));
         holder.tvNome.setText("Nome: " + tecnico.getNome());
-        holder.tvCpf.setText("CPF: " + formataCPF(tecnico.getCpf()));
+        holder.tvCpf.setText("CPF: " + FuncoesUtil.formataCPF(tecnico.getCpf()));
         holder.tvEmail.setText("Email: " + tecnico.getEmail());
         holder.tvDataCadastro.setText("Cadastrado em: " + tecnico.getDataCriacao());
         Glide.with(context)
@@ -94,11 +95,6 @@ public class TecnicoListAdapter extends RecyclerView.Adapter<TecnicoListAdapter.
             btnExcluirTecnico = (Button) itemView.findViewById(R.id.btnClienteListExcluir);
             ivPessoaImage = (ImageView) itemView.findViewById(R.id.ivPessoa);
         }
-    }
-
-    private static String formataCPF(String CPF) {
-        return(CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
-                CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
     }
 
     private void abrirTecnicosUpdate(View view, String idTecnico) {
