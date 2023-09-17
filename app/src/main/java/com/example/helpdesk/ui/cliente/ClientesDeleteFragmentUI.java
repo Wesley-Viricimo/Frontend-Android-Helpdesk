@@ -1,14 +1,7 @@
 package com.example.helpdesk.ui.cliente;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +11,16 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.helpdesk.R;
-import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.api.client.ApiClient;
+import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.util.MaskEditUtil;
+import com.example.helpdesk.util.TokenUtil;
 
 import org.json.JSONObject;
 
@@ -40,7 +38,6 @@ public class ClientesDeleteFragmentUI extends Fragment {
     private Button btnDeleteCliCancelar;
     private ProgressBar pbDeleteCli;
     private ApiService apiService;
-    private SharedPreferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,15 +55,18 @@ public class ClientesDeleteFragmentUI extends Fragment {
 
         edtDeleteCliCpf.addTextChangedListener(MaskEditUtil.mask(edtDeleteCliCpf, MaskEditUtil.FORMAT_CPF));
 
+        TokenUtil tokenUtil = new TokenUtil(getActivity());
+        String token = tokenUtil.getAcessToken();
+
         componentesAtivos(false);
         iniciarProgressBar();
 
-        this.carregarCliente(idCliente);
+        this.carregarCliente(idCliente, token);
 
         btnDeleteCliDeletar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deletarCliente(idCliente);
+                deletarCliente(idCliente, token);
             }
         });
 
@@ -80,8 +80,8 @@ public class ClientesDeleteFragmentUI extends Fragment {
         return clientesDeleteFragment;
     }
 
-    private void carregarCliente(String idCliente) {
-        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+    private void carregarCliente(String idCliente, String token) {
+        apiService = ApiClient.getClient(token).create(ApiService.class);
         Call<Cliente> call = apiService.getCliente(idCliente);
 
         call.enqueue(new Callback<Cliente>() {
@@ -107,10 +107,10 @@ public class ClientesDeleteFragmentUI extends Fragment {
         });
     }
 
-    private void deletarCliente(String idCliente) {
+    private void deletarCliente(String idCliente, String token) {
         iniciarProgressBar();
 
-        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+        apiService = ApiClient.getClient(token).create(ApiService.class);
         Call<Void> call = apiService.deleteCliente(idCliente);
 
         call.enqueue(new Callback<Void>() {
@@ -153,12 +153,6 @@ public class ClientesDeleteFragmentUI extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, new ClientesListFragmentUI()).commit();
-    }
-
-    private String getToken() {
-        preferences = getActivity().getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
-        String token = preferences.getString("TOKEN", null);
-        return token;
     }
 
     private void sleepThread() {

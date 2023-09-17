@@ -1,8 +1,6 @@
 package com.example.helpdesk.ui.cliente;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helpdesk.R;
 import com.example.helpdesk.adapter.ClienteListAdapter;
-import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.api.client.ApiClient;
+import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.model.Cliente;
+import com.example.helpdesk.util.TokenUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,6 @@ public class ClientesListFragmentUI extends Fragment {
     private ProgressBar progressBar;
     private List<Cliente> listClientes = new ArrayList<>();
     private ApiService apiService;
-    private SharedPreferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,14 +58,17 @@ public class ClientesListFragmentUI extends Fragment {
             }
         });
 
+        TokenUtil tokenUtil = new TokenUtil(getActivity());
+        String token = tokenUtil.getAcessToken();
+
         iniciarProgressBar();
-        this.carregarClientes();
+        this.carregarClientes(token);
 
         return clientesListFragment;
     }
 
-    private void carregarClientes() {
-        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+    private void carregarClientes(String token) {
+        apiService = ApiClient.getClient(token).create(ApiService.class);
         Call<List<Cliente>> call = apiService.getClientes();
 
         call.enqueue(new Callback<List<Cliente>>() {
@@ -104,12 +105,6 @@ public class ClientesListFragmentUI extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, new ClientesCreateFragmentUI()).commit();
-    }
-
-    private String getToken(){
-        preferences = getActivity().getSharedPreferences("HELPDESK",Context.MODE_PRIVATE);
-        String token = preferences.getString("TOKEN",null);
-        return token;
     }
 
     private void popularRecyclerView(){
