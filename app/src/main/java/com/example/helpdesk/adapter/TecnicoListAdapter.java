@@ -1,6 +1,7 @@
 package com.example.helpdesk.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.helpdesk.R;
 import com.example.helpdesk.model.Tecnico;
+import com.example.helpdesk.ui.tecnico.TecnicosDeleteFragmentUI;
+import com.example.helpdesk.ui.tecnico.TecnicosUpdateFragmentUI;
 
 import java.util.List;
 
@@ -45,6 +50,20 @@ public class TecnicoListAdapter extends RecyclerView.Adapter<TecnicoListAdapter.
         Glide.with(context)
                 .load(R.drawable.profile)
                 .into(holder.ivPessoaImage);
+
+        holder.btnAlterarTecnico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirTecnicosUpdate(view, tecnico.getId().toString());
+            }
+        });
+
+        holder.btnExcluirTecnico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirTecnicosDelete(view, tecnico.getId().toString());
+            }
+        });
     }
 
     @Override
@@ -80,5 +99,23 @@ public class TecnicoListAdapter extends RecyclerView.Adapter<TecnicoListAdapter.
     private static String formataCPF(String CPF) {
         return(CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
                 CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
+    }
+
+    private void abrirTecnicosUpdate(View view, String idTecnico) {
+        Bundle bundle = new Bundle();
+        bundle.putString("idTecnico", idTecnico);
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        Fragment fragmentClientesUpdate = new TecnicosUpdateFragmentUI();
+        fragmentClientesUpdate.setArguments(bundle);
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentClientesUpdate).addToBackStack(null).commit();
+    }
+
+    private void abrirTecnicosDelete(View view, String idTecnico) {
+        Bundle bundle = new Bundle();
+        bundle.putString("idTecnico", idTecnico);
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        Fragment fragmentClientesDelete = new TecnicosDeleteFragmentUI();
+        fragmentClientesDelete.setArguments(bundle);
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentClientesDelete).addToBackStack(null).commit();
     }
 }
