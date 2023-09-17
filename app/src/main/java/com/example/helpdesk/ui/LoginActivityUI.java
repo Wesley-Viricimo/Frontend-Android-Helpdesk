@@ -30,9 +30,7 @@ public class LoginActivityUI extends AppCompatActivity {
     private EditText edtSenha;
     private Button btnEntrar;
     private ProgressBar progressBarLogin;
-
     private ApiService apiService;
-
     private SharedPreferences preferences;
 
     @Override
