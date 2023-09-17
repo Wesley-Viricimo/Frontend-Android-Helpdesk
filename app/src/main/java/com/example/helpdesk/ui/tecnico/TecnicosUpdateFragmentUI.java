@@ -108,8 +108,6 @@ public class TecnicosUpdateFragmentUI extends Fragment {
     }
 
     private void atualizarTecnico(String idTecnico, String token) {
-        iniciarProgressBar();
-
         String nome = edtUpdateTecNome.getText().toString();
         String cpf = edtUpdateTecCpf.getText().toString();
         String email = edtUpdateTecEmail.getText().toString();
@@ -118,6 +116,8 @@ public class TecnicosUpdateFragmentUI extends Fragment {
         ValidaCamposUtil validaCampos = new ValidaCamposUtil(getActivity());
 
         if (validaCampos.validaCampos(nome, cpf, email, senha)) {
+            iniciarProgressBar();
+            
             Tecnico tecnico = new Tecnico(nome, cpf, email, senha);
             apiService = ApiClient.getClient(token).create(ApiService.class);
             Call<Void> call = apiService.putTecnico(idTecnico, tecnico);
@@ -144,8 +144,6 @@ public class TecnicosUpdateFragmentUI extends Fragment {
                 }
             });
 
-        } else {
-            encerrarProgressBar();
         }
 
     }

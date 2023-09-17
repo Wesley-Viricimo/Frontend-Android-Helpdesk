@@ -109,8 +109,6 @@ public class ClientesUpdateFragmentUI extends Fragment {
     }
 
     private void atualizarCliente(String idCliente, String token) {
-        iniciarProgressBar();
-
         String nome = edtUpdateCliNome.getText().toString();
         String cpf = edtUpdateCliCpf.getText().toString();
         String email = edtUpdateCliEmail.getText().toString();
@@ -119,6 +117,8 @@ public class ClientesUpdateFragmentUI extends Fragment {
         ValidaCamposUtil validaCampos = new ValidaCamposUtil(getActivity());
 
         if (validaCampos.validaCampos(nome, cpf, email, senha)) {
+            iniciarProgressBar();
+
             Cliente cliente = new Cliente(nome, cpf, email, senha);
             apiService = ApiClient.getClient(token).create(ApiService.class);
             Call<Void> call = apiService.putCliente(idCliente, cliente);
@@ -144,8 +144,6 @@ public class ClientesUpdateFragmentUI extends Fragment {
                     t.printStackTrace();
                 }
             });
-        } else {
-            encerrarProgressBar();
         }
     }
 
