@@ -58,7 +58,7 @@ public class ClientesUpdateFragmentUI extends Fragment {
 
         edtUpdateCliCpf.addTextChangedListener(MaskEditUtil.mask(edtUpdateCliCpf, MaskEditUtil.FORMAT_CPF));
 
-        inativarEditsButtons();
+        componentesAtivos(false);
         iniciarProgressBar();
         this.carregarCliente(idCliente);
 
@@ -95,7 +95,7 @@ public class ClientesUpdateFragmentUI extends Fragment {
 
                     sleepThread();
                     encerrarProgressBar();
-                    ativarEditsButtons();
+                    componentesAtivos(true);
                 }
             }
 
@@ -220,22 +220,13 @@ public class ClientesUpdateFragmentUI extends Fragment {
         pbUpdateCli.setVisibility(View.GONE);
     }
 
-    private void inativarEditsButtons() {
-        edtUpdateCliNome.setEnabled(false);
-        edtUpdateCliCpf.setEnabled(false);
-        edtUpdateCliEmail.setEnabled(false);
-        edtUpdateCliSenha.setEnabled(false);
-        btnUpdateCliAtualizar.setEnabled(false);
-        btnUpdateCliCancelar.setEnabled(false);
-    }
-
-    private void ativarEditsButtons() {
-        edtUpdateCliNome.setEnabled(true);
-        edtUpdateCliCpf.setEnabled(true);
-        edtUpdateCliEmail.setEnabled(true);
-        edtUpdateCliSenha.setEnabled(true);
-        btnUpdateCliAtualizar.setEnabled(true);
-        btnUpdateCliCancelar.setEnabled(true);
+    private void componentesAtivos(boolean isComponentesAtivos) {
+        edtUpdateCliNome.setEnabled(isComponentesAtivos);
+        edtUpdateCliCpf.setEnabled(isComponentesAtivos);
+        edtUpdateCliEmail.setEnabled(isComponentesAtivos);
+        edtUpdateCliSenha.setEnabled(isComponentesAtivos);
+        btnUpdateCliAtualizar.setEnabled(isComponentesAtivos);
+        btnUpdateCliCancelar.setEnabled(isComponentesAtivos);
     }
 
     private void iniciarProgressBar() {

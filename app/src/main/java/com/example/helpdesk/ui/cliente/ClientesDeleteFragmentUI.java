@@ -58,7 +58,7 @@ public class ClientesDeleteFragmentUI extends Fragment {
 
         edtDeleteCliCpf.addTextChangedListener(MaskEditUtil.mask(edtDeleteCliCpf, MaskEditUtil.FORMAT_CPF));
 
-        inativarEditsButtons();
+        componentesAtivos(false);
         iniciarProgressBar();
 
         this.carregarCliente(idCliente);
@@ -175,13 +175,13 @@ public class ClientesDeleteFragmentUI extends Fragment {
     }
 
 
-    private void inativarEditsButtons() {
-        edtDeleteCliNome.setEnabled(false);
-        edtDeleteCliCpf.setEnabled(false);
-        edtDeleteCliEmail.setEnabled(false);
-        edtDeleteCliSenha.setEnabled(false);
-        btnDeleteCliDeletar.setEnabled(false);
-        btnDeleteCliCancelar.setEnabled(false);
+    private void componentesAtivos(boolean isComponentesAtivos) {
+        edtDeleteCliNome.setEnabled(isComponentesAtivos);
+        edtDeleteCliCpf.setEnabled(isComponentesAtivos);
+        edtDeleteCliEmail.setEnabled(isComponentesAtivos);
+        edtDeleteCliSenha.setEnabled(isComponentesAtivos);
+        btnDeleteCliDeletar.setEnabled(isComponentesAtivos);
+        btnDeleteCliCancelar.setEnabled(isComponentesAtivos);
     }
 
     private void ativarButtons() {
