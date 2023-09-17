@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="7dp"
+    android:background="@drawable/container_adapter"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivChamado"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="2dp"
+                tools:src="@drawable/chamado"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvIdChamado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:text="Id"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvTituloChamado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:text="Titulo"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvDescricaoChamado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:text="Descricao"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvPrioridadeChamado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:text="Prioridade"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvStatusChamado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:text="Status"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvDataAberturaChamado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:text="Data abertura"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvDataFechamentoChamado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:text="Data fechamento"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnChamadoListAlterar"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/botao_cadastro_custom"
+            android:text="Alterar"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btnChamadoListExcluir"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/botao_cancelar_custom"
+            android:text="Excluir"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</LinearLayout>
