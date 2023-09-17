@@ -144,7 +144,7 @@ public class TecnicosUpdateFragmentUI extends Fragment {
                 }
             });
 
-        }
+        } 
 
     }
 

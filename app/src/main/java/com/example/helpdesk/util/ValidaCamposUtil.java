@@ -6,8 +6,6 @@ import android.widget.Toast;
 public class ValidaCamposUtil {
     private Activity activity;
 
-    public ValidaCamposUtil(){}
-
     public ValidaCamposUtil(Activity activity) {
         this.activity = activity;
     }
