@@ -1,8 +1,6 @@
 package com.example.helpdesk.ui.tecnico;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +20,8 @@ import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.model.Tecnico;
 import com.example.helpdesk.util.MaskEditUtil;
+import com.example.helpdesk.util.TokenUtil;
+import com.example.helpdesk.util.ValidaCamposUtil;
 
 import org.json.JSONObject;
 
@@ -42,7 +42,6 @@ public class TecnicosCreateFragmentUI extends Fragment {
     private Button btnCadTecCancelar;
     private ProgressBar pbCadTec;
     private ApiService apiService;
-    private SharedPreferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,11 +58,14 @@ public class TecnicosCreateFragmentUI extends Fragment {
 
         edtCadTecCpf.addTextChangedListener(MaskEditUtil.mask(edtCadTecCpf, MaskEditUtil.FORMAT_CPF));
 
+        TokenUtil tokenUtil = new TokenUtil(getActivity());
+        String token = tokenUtil.getAcessToken();
+
         btnCadTecCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 botaoCadastrarAtivo(false);
-                validarCadastro();
+                validarCadastro(token);
             }
         });
 
@@ -77,20 +79,22 @@ public class TecnicosCreateFragmentUI extends Fragment {
         return clientesCreateFragment;
     }
 
-    private void validarCadastro() {
+    private void validarCadastro(String token) {
         String nome = edtCadTecNome.getText().toString();
         String cpf = edtCadTecCpf.getText().toString();
         String email = edtCadTecEmail.getText().toString();
         String senha = edtCadTecSenha.getText().toString();
         List<String> perfis = new ArrayList<>();
 
-        if (validaCampos(nome, cpf, email, senha)) {
+        ValidaCamposUtil validaCampos = new ValidaCamposUtil(getActivity());
+
+        if (validaCampos.validaCampos(nome, cpf, email, senha)) {
             iniciarProgressBar();
             perfis.add("0");
             perfis.add("2");
             String cpfFormatado = cpf.replaceAll("[^0-9]", "");
 
-            apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+            apiService = ApiClient.getClient(token).create(ApiService.class);
 
             Tecnico tecnico = new Tecnico(nome, cpfFormatado, email, senha, perfis);
 
@@ -159,55 +163,10 @@ public class TecnicosCreateFragmentUI extends Fragment {
         animation.start();
     }
 
-    private String getToken() {
-        preferences = getActivity().getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
-        String token = preferences.getString("TOKEN", null);
-        return token;
-    }
-
     private void abrirFragmentTecnicosList() {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, new TecnicosListFragmentUI()).commit();
-    }
-
-    private boolean validaCampos(String nome, String cpf, String email, String senha) {
-        if (validaNome(nome) && validaCpf(cpf) && validaEmail(email) && validaSenha(senha)) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean validaNome(String nome) {
-        if (!nome.equals("") && !nome.equals(null) && nome.length() > 5) {
-            return true;
-        }
-        Toast.makeText(getContext(), "Campo nome é requerido!", Toast.LENGTH_SHORT).show();
-        return false;
-    }
-
-    private boolean validaCpf(String cpf) {
-        if (!cpf.equals("") && !cpf.equals(null) && cpf.length() >= 11) {
-            return true;
-        }
-        Toast.makeText(getContext(), "Informe um CPF válido!", Toast.LENGTH_SHORT).show();
-        return false;
-    }
-
-    private boolean validaEmail(String email) {
-        if (!email.equals("") && !email.equals(null) && email.contains("@") && email.contains(".com")) {
-            return true;
-        }
-        Toast.makeText(getContext(), "Informe um e-mail válido!", Toast.LENGTH_SHORT).show();
-        return false;
-    }
-
-    private boolean validaSenha(String senha) {
-        if (!senha.equals("") && !senha.equals(null) && senha.length() > 3) {
-            return true;
-        }
-        Toast.makeText(getContext(), "Informe uma senha válida!", Toast.LENGTH_LONG).show();
-        return false;
     }
 
     private void botaoCadastrarAtivo(Boolean isAtivo) {

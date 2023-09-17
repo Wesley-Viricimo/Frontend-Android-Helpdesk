@@ -1,8 +1,6 @@
 package com.example.helpdesk.ui.tecnico;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +21,7 @@ import com.example.helpdesk.adapter.TecnicoListAdapter;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.model.Tecnico;
+import com.example.helpdesk.util.TokenUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,6 @@ public class TecnicosListFragmentUI extends Fragment {
     private ProgressBar progressBar;
     private List<Tecnico> listTecnicos = new ArrayList<>();
     private ApiService apiService;
-    private SharedPreferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,8 +57,11 @@ public class TecnicosListFragmentUI extends Fragment {
             }
         });
 
+        TokenUtil tokenUtil = new TokenUtil(getActivity());
+        String token = tokenUtil.getAcessToken();
+
         iniciarProgressBar();
-        this.carregarTecnicos();
+        this.carregarTecnicos(token);
 
         return tecnicosListFragment;
     }
@@ -73,8 +74,8 @@ public class TecnicosListFragmentUI extends Fragment {
         animation.start();
     }
 
-    private void carregarTecnicos() {
-        apiService = ApiClient.getClient(getToken()).create(ApiService.class);
+    private void carregarTecnicos(String token) {
+        apiService = ApiClient.getClient(token).create(ApiService.class);
         Call<List<Tecnico>> call = apiService.getTecnicos();
 
         call.enqueue(new Callback<List<Tecnico>>() {
@@ -133,12 +134,6 @@ public class TecnicosListFragmentUI extends Fragment {
     private void encerrarProgressBar() {
         progressBar.clearAnimation();
         progressBar.setVisibility(View.GONE);
-    }
-
-    private String getToken(){
-        preferences = getActivity().getSharedPreferences("HELPDESK", Context.MODE_PRIVATE);
-        String token = preferences.getString("TOKEN",null);
-        return token;
     }
 
 }
