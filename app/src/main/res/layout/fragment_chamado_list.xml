@@ -30,7 +30,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnAbirChamado"
+                android:id="@+id/btnAbrirChamado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/botao_custom"

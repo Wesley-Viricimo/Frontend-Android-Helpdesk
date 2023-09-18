@@ -49,7 +49,7 @@
             android:fontFamily="@font/open_sans"
             android:textColor="@color/white"
             android:text="Id"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -61,7 +61,7 @@
             android:fontFamily="@font/open_sans"
             android:textColor="@color/white"
             android:text="Titulo"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvDescricaoChamado"
@@ -72,7 +72,7 @@
             android:fontFamily="@font/open_sans"
             android:textColor="@color/white"
             android:text="Descricao"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvPrioridadeChamado"
@@ -83,7 +83,7 @@
             android:fontFamily="@font/open_sans"
             android:textColor="@color/white"
             android:text="Prioridade"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvStatusChamado"
@@ -94,7 +94,29 @@
             android:fontFamily="@font/open_sans"
             android:textColor="@color/white"
             android:text="Status"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvClienteChamado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:text="Cliente"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvTecnicoChamado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/white"
+            android:text="Tecnico"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvDataAberturaChamado"
@@ -105,7 +127,7 @@
             android:fontFamily="@font/open_sans"
             android:textColor="@color/white"
             android:text="Data abertura"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvDataFechamentoChamado"
@@ -116,7 +138,7 @@
             android:fontFamily="@font/open_sans"
             android:textColor="@color/white"
             android:text="Data fechamento"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 

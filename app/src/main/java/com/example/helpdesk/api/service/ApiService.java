@@ -1,5 +1,6 @@
 package com.example.helpdesk.api.service;
 
+import com.example.helpdesk.model.Chamado;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.model.Credenciais;
 import com.example.helpdesk.model.Tecnico;
@@ -48,4 +49,9 @@ public interface ApiService {
 
     @DELETE("tecnicos/{id}")
     Call<Void> deleteTecnico(@Path("id") String id);
+
+    @GET("chamados")
+    Call<List<Chamado>> getChamados();
+
+
 }
