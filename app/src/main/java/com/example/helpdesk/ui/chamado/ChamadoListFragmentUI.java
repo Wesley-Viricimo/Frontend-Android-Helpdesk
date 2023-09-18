@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +21,7 @@ import com.example.helpdesk.adapter.ChamadoListAdapter;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.api.service.ApiService;
 import com.example.helpdesk.model.Chamado;
+import com.example.helpdesk.ui.cliente.ClientesCreateFragmentUI;
 import com.example.helpdesk.util.TokenUtil;
 
 import java.util.ArrayList;
@@ -52,7 +55,7 @@ public class ChamadoListFragmentUI extends Fragment {
         btnAbrirChamado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                abrirFragmentChamadoCreate();
             }
         });
 
@@ -128,5 +131,11 @@ public class ChamadoListFragmentUI extends Fragment {
     private void encerrarProgressBar() {
         progressBar.clearAnimation();
         progressBar.setVisibility(View.GONE);
+    }
+
+    private void abrirFragmentChamadoCreate() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, new ChamadoCreateFragmentUI()).commit();
     }
 }
