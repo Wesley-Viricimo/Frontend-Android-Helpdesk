@@ -126,6 +126,8 @@ public class ClientesCreateFragmentUI extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else {
+            botaoCadastrarAtivo(true);
         }
 
     }
@@ -137,7 +139,7 @@ public class ClientesCreateFragmentUI extends Fragment {
         abrirFragmentClientesList();
     }
 
-    private void requisicaoComErro(String erro){
+    private void requisicaoComErro(String erro) {
         sleepThread();
         encerrarProgressBar();
         Toast.makeText(getActivity(), erro, Toast.LENGTH_SHORT).show();

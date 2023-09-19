@@ -119,7 +119,7 @@ public class TecnicosCreateFragmentUI extends Fragment {
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-
+                        t.printStackTrace();
                     }
                 });
             } catch (Exception e) {

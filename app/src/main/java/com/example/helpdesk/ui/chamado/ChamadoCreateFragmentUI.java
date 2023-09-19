@@ -1,17 +1,22 @@
 package com.example.helpdesk.ui.chamado;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.helpdesk.R;
 import com.example.helpdesk.api.client.ApiClient;
@@ -21,6 +26,8 @@ import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.model.Tecnico;
 import com.example.helpdesk.util.TokenUtil;
 import com.example.helpdesk.util.ValidaCamposUtil;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -69,12 +76,22 @@ public class ChamadoCreateFragmentUI extends Fragment {
         TokenUtil tokenUtil = new TokenUtil(getActivity());
         String token = tokenUtil.getAcessToken();
 
+        iniciarProgressBar();
+
         init(token);
 
         btnChamadoCreateAbrir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                botaoCadastrarAtivo(false);
                 validarAberturaChamado(token);
+            }
+        });
+
+        btnChamadoCreateCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirFragmentChamadosList();
             }
         });
 
@@ -100,6 +117,8 @@ public class ChamadoCreateFragmentUI extends Fragment {
         ValidaCamposUtil validaCamposUtil = new ValidaCamposUtil(getActivity());
 
         if(validaCamposUtil.validacoesChamado(titulo, observacoes, clienteSelecionado, tecnicoSelecionado)) {
+            iniciarProgressBar();
+
             String nomeCliente = hashClientes.get(clienteSelecionado);
             String nomeTecnico = hashTecnicos.get(tecnicoSelecionado);
 
@@ -111,15 +130,68 @@ public class ChamadoCreateFragmentUI extends Fragment {
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-
+                    if(response.isSuccessful()) {
+                        requisicaoComSucesso();
+                    } else {
+                        try {
+                            JSONObject jObjError = new JSONObject(response.errorBody().string());
+                            String erro = jObjError.getString("message");
+                            requisicaoComErro(erro);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
-
+                    t.printStackTrace();
                 }
             });
+        } else {
+            botaoCadastrarAtivo(true);
         }
+    }
+
+    private void requisicaoComSucesso() {
+        sleepThread();
+        encerrarProgressBar();
+        Toast.makeText(getContext(), "Chamado aberto com sucesso!", Toast.LENGTH_SHORT).show();
+        abrirFragmentChamadosList();
+    }
+
+    private void requisicaoComErro(String erro) {
+        sleepThread();
+        encerrarProgressBar();
+        Toast.makeText(getActivity(), erro, Toast.LENGTH_SHORT).show();
+        botaoCadastrarAtivo(true);
+    }
+
+    private void iniciarProgressBar() {
+        pbChamadoCreate.setVisibility(View.VISIBLE);
+        ObjectAnimator animation = ObjectAnimator.ofInt(pbChamadoCreate, "progress", 0, 300);
+        animation.setDuration(3000);
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.start();
+    }
+
+    private void encerrarProgressBar() {
+        pbChamadoCreate.clearAnimation();
+        pbChamadoCreate.setVisibility(View.GONE);
+    }
+
+    private void sleepThread() {
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void abrirFragmentChamadosList() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, new ChamadoListFragmentUI()).commit();
     }
 
     private void carregarStatus() {
@@ -203,12 +275,14 @@ public class ChamadoCreateFragmentUI extends Fragment {
         ArrayAdapter arrayCliente = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashClientes.values().toArray());
         arrayCliente.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnChamadoCreateCliente.setAdapter(arrayCliente);
+        encerrarProgressBar();
     }
 
     private void finalizarLoadTecnicos() {
         ArrayAdapter arrayTecnicos= new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashTecnicos.values().toArray());
         arrayTecnicos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnChamadoCreateTecnico.setAdapter(arrayTecnicos);
+        encerrarProgressBar();
     }
 
     private void validarClickStatus() {
@@ -265,6 +339,10 @@ public class ChamadoCreateFragmentUI extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
+    }
+
+    private void botaoCadastrarAtivo(Boolean isAtivo) {
+        btnChamadoCreateAbrir.setEnabled(isAtivo);
     }
 
     private Integer getKeyByValue(final Map<Integer, String> map, final String value) {
