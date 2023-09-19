@@ -82,8 +82,8 @@ public class ChamadoListFragmentUI extends Fragment {
                         Integer id = cham.getId();
                         String dataAbertura = cham.getDataAbertura();
                         String dataFechamento = cham.getDataFechamento();
-                        String prioridade = cham.getPrioridade();
-                        String status = cham.getStatus();
+                        Integer prioridade = cham.getPrioridade();
+                        Integer status = cham.getStatus();
                         String titulo = cham.getTitulo();
                         String observacoes = cham.getObservacoes();
                         String tecnico = cham.getNomeTecnico();

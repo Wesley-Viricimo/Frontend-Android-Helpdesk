@@ -4,8 +4,8 @@ public class Chamado {
     Integer id;
     String dataAbertura;
     String dataFechamento;
-    String prioridade;
-    String status;
+    Integer prioridade;
+    Integer status;
     String titulo;
     String observacoes;
 
@@ -14,7 +14,7 @@ public class Chamado {
     String nomeTecnico;
     String nomeCliente;
 
-    public Chamado(Integer id, String dataAbertura, String dataFechamento, String prioridade, String status, String titulo, String observacoes, String nomeTecnico, String nomeCliente) {
+    public Chamado(Integer id, String dataAbertura, String dataFechamento, Integer prioridade, Integer status, String titulo, String observacoes, String nomeTecnico, String nomeCliente) {
         this.id = id;
         this.dataAbertura = dataAbertura;
         this.dataFechamento = dataFechamento;
@@ -38,11 +38,11 @@ public class Chamado {
         return dataFechamento;
     }
 
-    public String getPrioridade() {
+    public Integer getPrioridade() {
         return prioridade;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 

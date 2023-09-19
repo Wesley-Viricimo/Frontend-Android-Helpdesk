@@ -38,14 +38,14 @@ public class ChamadoListAdapter extends RecyclerView.Adapter<ChamadoListAdapter.
     public void onBindViewHolder(@NonNull ChamadoListViewHolder holder, int position) {
         Chamado chamado = listaChamados.get(position);
         String dataFechamento = chamado.getDataFechamento();
-        String prioridade = retornaPrioridade(chamado.getPrioridade());
-        String status = retornaStatus(chamado.getStatus());
+        String prioridade = retornaPrioridade(chamado.getPrioridade().toString());
+        String status = retornaStatus(chamado.getStatus().toString());
 
         if(dataFechamento == null) {
             dataFechamento = "";
         }
 
-        holder.tvIdChamado.setText("Id: " + Integer.toString(chamado.getId()));
+        holder.tvIdChamado.setText("Id: " + chamado.getId().toString());
         holder.tvTituloChamado.setText("Título: " + chamado.getTitulo());
         holder.tvDescricaoChamado.setText("Descrição: " + chamado.getObservacoes());
         holder.tvPrioridadeChamado.setText("Prioridade: " + prioridade);
