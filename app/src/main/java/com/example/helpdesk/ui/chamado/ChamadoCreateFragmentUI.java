@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.helpdesk.R;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.api.service.ApiService;
+import com.example.helpdesk.model.Chamado;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.model.Tecnico;
 import com.example.helpdesk.util.TokenUtil;
@@ -94,12 +95,30 @@ public class ChamadoCreateFragmentUI extends Fragment {
 
     private void validarAberturaChamado(String token) {
         String titulo = edtChamadoCreateTitulo.getText().toString();
-        String descricao = edtChamadoCreateDescricao.getText().toString();
+        String observacoes = edtChamadoCreateDescricao.getText().toString();
 
         ValidaCamposUtil validaCamposUtil = new ValidaCamposUtil(getActivity());
 
-        if(validaCamposUtil.validacoesChamado(titulo, descricao, clienteSelecionado, tecnicoSelecionado)) {
+        if(validaCamposUtil.validacoesChamado(titulo, observacoes, clienteSelecionado, tecnicoSelecionado)) {
+            String nomeCliente = hashClientes.get(clienteSelecionado);
+            String nomeTecnico = hashTecnicos.get(tecnicoSelecionado);
 
+            Chamado chamado = new Chamado(prioridadeSelecionada, statusSelecionado, titulo, observacoes, clienteSelecionado, tecnicoSelecionado, nomeCliente, nomeTecnico);
+
+            apiService = ApiClient.getClient(token).create(ApiService.class);
+            Call<Void> call = apiService.abrirChamado(chamado);
+
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+
+                }
+            });
         }
     }
 

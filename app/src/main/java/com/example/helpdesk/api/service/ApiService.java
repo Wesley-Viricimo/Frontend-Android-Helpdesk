@@ -53,5 +53,8 @@ public interface ApiService {
     @GET("chamados")
     Call<List<Chamado>> getChamados();
 
+    @POST("chamados")
+    Call<Void> abrirChamado(@Body Chamado chamado);
+
 
 }

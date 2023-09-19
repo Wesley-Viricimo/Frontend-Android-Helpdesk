@@ -26,6 +26,17 @@ public class Chamado {
         this.nomeCliente = nomeCliente;
     }
 
+    public Chamado(Integer prioridade, Integer status, String titulo, String observacoes, Integer cliente, Integer tecnico, String nomeCliente, String nomeTecnico) {
+        this.prioridade = prioridade;
+        this.status = status;
+        this.titulo = titulo;
+        this.observacoes = observacoes;
+        this.cliente = cliente;
+        this.tecnico = tecnico;
+        this.nomeCliente = nomeCliente;
+        this.nomeTecnico = nomeTecnico;
+    }
+
     public Integer getId() {
         return id;
     }
