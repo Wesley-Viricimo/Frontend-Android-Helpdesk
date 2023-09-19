@@ -48,4 +48,43 @@ public class ValidaCamposUtil {
         Toast.makeText(activity, "Informe uma senha válida!", Toast.LENGTH_LONG).show();
         return false;
     }
+
+    public boolean validacoesChamado(String titulo, String descricao, Integer cliente, Integer tecnico) {
+        if (validaTitulo(activity, titulo) && validaDescricao(activity, descricao) && validaCliente(activity, cliente) && validaTecnico(activity, tecnico)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean validaTitulo(Activity activity, String titulo) {
+        if (!titulo.equals("") && !titulo.equals(null) && titulo.length() > 3) {
+            return true;
+        }
+        Toast.makeText(activity, "Campo título é requerido!", Toast.LENGTH_LONG).show();
+        return false;
+    }
+
+    public boolean validaDescricao(Activity activity, String descricao) {
+        if (!descricao.equals("") && !descricao.equals(null) && descricao.length() > 3) {
+            return true;
+        }
+        Toast.makeText(activity, "Campo descrição é requerido!", Toast.LENGTH_LONG).show();
+        return false;
+    }
+
+    public boolean validaCliente(Activity activity, Integer cliente) {
+        if (cliente != 0) {
+            return true;
+        }
+        Toast.makeText(activity, "Selecione um cliente!", Toast.LENGTH_LONG).show();
+        return false;
+    }
+
+    public boolean validaTecnico(Activity activity, Integer tecnico) {
+        if (tecnico != 0) {
+            return true;
+        }
+        Toast.makeText(activity, "Selecione um técnico!", Toast.LENGTH_LONG).show();
+        return false;
+    }
 }
