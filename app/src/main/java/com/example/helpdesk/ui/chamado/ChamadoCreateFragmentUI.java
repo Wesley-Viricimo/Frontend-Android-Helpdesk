@@ -1,9 +1,6 @@
 package com.example.helpdesk.ui.chamado;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.helpdesk.R;
 import com.example.helpdesk.api.client.ApiClient;
@@ -69,74 +68,7 @@ public class ChamadoCreateFragmentUI extends Fragment {
         TokenUtil tokenUtil = new TokenUtil(getActivity());
         String token = tokenUtil.getAcessToken();
 
-        carregarStatus();
-        carregarPrioridades();
-        carregarClientes(token);
-        carregarTecnicos(token);
-
-        ArrayAdapter arrayStatus = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashStatus.values().toArray());
-        ArrayAdapter arrayPrioridade = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashPrioridades.values().toArray());
-
-        arrayStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        arrayPrioridade.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnChamadoCreateStatus.setAdapter(arrayStatus);
-        spnChamadoCreatePrioridade.setAdapter(arrayPrioridade);
-
-        spnChamadoCreateStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String status = adapterView.getSelectedItem().toString();
-                Integer codStatus = getKeyByValue(hashStatus, status);
-                statusSelecionado = codStatus;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        spnChamadoCreatePrioridade.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String prioridade = adapterView.getSelectedItem().toString();
-                Integer codPrioridade = getKeyByValue(hashPrioridades, prioridade);
-                prioridadeSelecionada = codPrioridade;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        spnChamadoCreateTecnico.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String tecnico = adapterView.getSelectedItem().toString();
-                Integer idTecnico = getKeyByValue(hashTecnicos, tecnico);
-                tecnicoSelecionado = idTecnico;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        spnChamadoCreateCliente.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String cliente = adapterView.getSelectedItem().toString();
-                Integer idCliente = getKeyByValue(hashClientes, cliente);
-                clienteSelecionado = idCliente;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+        init(token);
 
         btnChamadoCreateAbrir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,8 +77,30 @@ public class ChamadoCreateFragmentUI extends Fragment {
             }
         });
 
-
         return chamadoCreateFragment;
+    }
+
+    private void init(String token) {
+        carregarStatus();
+        carregarPrioridades();
+        carregarClientes(token);
+        carregarTecnicos(token);
+        finalizarLoadStatusPrioridade();
+        validarClickStatus();
+        validarClickPrioridade();
+        validarClickCliente();
+        validarClickTecnico();
+    }
+
+    private void validarAberturaChamado(String token) {
+        String titulo = edtChamadoCreateTitulo.getText().toString();
+        String descricao = edtChamadoCreateDescricao.getText().toString();
+
+        ValidaCamposUtil validaCamposUtil = new ValidaCamposUtil(getActivity());
+
+        if(validaCamposUtil.validacoesChamado(titulo, descricao, clienteSelecionado, tecnicoSelecionado)) {
+
+        }
     }
 
     private void carregarStatus() {
@@ -159,17 +113,6 @@ public class ChamadoCreateFragmentUI extends Fragment {
         hashPrioridades.put(0, "BAIXA");
         hashPrioridades.put(1, "MEDIA");
         hashPrioridades.put(2, "ALTA");
-    }
-
-    private void validarAberturaChamado(String token) {
-        String titulo = edtChamadoCreateTitulo.getText().toString();
-        String descricao = edtChamadoCreateDescricao.getText().toString();
-
-        ValidaCamposUtil validaCamposUtil = new ValidaCamposUtil(getActivity());
-
-        if(validaCamposUtil.validacoesChamado(titulo, descricao, clienteSelecionado, tecnicoSelecionado)) {
-            
-        }
     }
 
     private void carregarClientes(String token) {
@@ -228,6 +171,15 @@ public class ChamadoCreateFragmentUI extends Fragment {
         });
     }
 
+    private void finalizarLoadStatusPrioridade() {
+        ArrayAdapter arrayStatus = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashStatus.values().toArray());
+        ArrayAdapter arrayPrioridade = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashPrioridades.values().toArray());
+        arrayStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        arrayPrioridade.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnChamadoCreateStatus.setAdapter(arrayStatus);
+        spnChamadoCreatePrioridade.setAdapter(arrayPrioridade);
+    }
+
     private void finalizarLoadClientes() {
         ArrayAdapter arrayCliente = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashClientes.values().toArray());
         arrayCliente.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -238,6 +190,62 @@ public class ChamadoCreateFragmentUI extends Fragment {
         ArrayAdapter arrayTecnicos= new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashTecnicos.values().toArray());
         arrayTecnicos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnChamadoCreateTecnico.setAdapter(arrayTecnicos);
+    }
+
+    private void validarClickStatus() {
+        spnChamadoCreateStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String status = adapterView.getSelectedItem().toString();
+                Integer codStatus = getKeyByValue(hashStatus, status);
+                statusSelecionado = codStatus;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+    }
+
+    private void validarClickPrioridade() {
+        spnChamadoCreatePrioridade.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String prioridade = adapterView.getSelectedItem().toString();
+                Integer codPrioridade = getKeyByValue(hashPrioridades, prioridade);
+                prioridadeSelecionada = codPrioridade;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+    }
+
+    private void validarClickCliente() {
+        spnChamadoCreateCliente.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String cliente = adapterView.getSelectedItem().toString();
+                Integer idCliente = getKeyByValue(hashClientes, cliente);
+                clienteSelecionado = idCliente;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+    }
+
+    private void validarClickTecnico() {
+        spnChamadoCreateTecnico.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String tecnico = adapterView.getSelectedItem().toString();
+                Integer idTecnico = getKeyByValue(hashTecnicos, tecnico);
+                tecnicoSelecionado = idTecnico;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
     }
 
     private Integer getKeyByValue(final Map<Integer, String> map, final String value) {
