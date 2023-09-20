@@ -45,7 +45,7 @@ public class ValidaCamposUtil {
         if (!senha.equals("") && !senha.equals(null) && senha.length() > 3) {
             return true;
         }
-        Toast.makeText(activity, "Informe uma senha válida!", Toast.LENGTH_LONG).show();
+        Toast.makeText(activity, "Informe uma senha válida!", Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -60,7 +60,7 @@ public class ValidaCamposUtil {
         if (!titulo.equals("") && !titulo.equals(null) && titulo.length() > 3) {
             return true;
         }
-        Toast.makeText(activity, "Campo título é requerido!", Toast.LENGTH_LONG).show();
+        Toast.makeText(activity, "Campo título é requerido!", Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -68,7 +68,7 @@ public class ValidaCamposUtil {
         if (!descricao.equals("") && !descricao.equals(null) && descricao.length() > 3) {
             return true;
         }
-        Toast.makeText(activity, "Campo descrição é requerido!", Toast.LENGTH_LONG).show();
+        Toast.makeText(activity, "Campo descrição é requerido!", Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -76,7 +76,7 @@ public class ValidaCamposUtil {
         if (cliente != 0) {
             return true;
         }
-        Toast.makeText(activity, "Selecione um cliente!", Toast.LENGTH_LONG).show();
+        Toast.makeText(activity, "Selecione um cliente!", Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -84,7 +84,7 @@ public class ValidaCamposUtil {
         if (tecnico != 0) {
             return true;
         }
-        Toast.makeText(activity, "Selecione um técnico!", Toast.LENGTH_LONG).show();
+        Toast.makeText(activity, "Selecione um técnico!", Toast.LENGTH_SHORT).show();
         return false;
     }
 }

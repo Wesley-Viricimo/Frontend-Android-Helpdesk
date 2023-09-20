@@ -263,24 +263,24 @@ public class ChamadoCreateFragmentUI extends Fragment {
     }
 
     private void finalizarLoadStatusPrioridade() {
-        ArrayAdapter arrayStatus = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashStatus.values().toArray());
-        ArrayAdapter arrayPrioridade = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashPrioridades.values().toArray());
-        arrayStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        arrayPrioridade.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrayStatus = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashStatus.values().toArray());
+        ArrayAdapter arrayPrioridade = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashPrioridades.values().toArray());
+        arrayStatus.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
+        arrayPrioridade.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
         spnChamadoCreateStatus.setAdapter(arrayStatus);
         spnChamadoCreatePrioridade.setAdapter(arrayPrioridade);
     }
 
     private void finalizarLoadClientes() {
-        ArrayAdapter arrayCliente = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashClientes.values().toArray());
-        arrayCliente.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrayCliente = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashClientes.values().toArray());
+        arrayCliente.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
         spnChamadoCreateCliente.setAdapter(arrayCliente);
         encerrarProgressBar();
     }
 
     private void finalizarLoadTecnicos() {
-        ArrayAdapter arrayTecnicos= new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, hashTecnicos.values().toArray());
-        arrayTecnicos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter arrayTecnicos= new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashTecnicos.values().toArray());
+        arrayTecnicos.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
         spnChamadoCreateTecnico.setAdapter(arrayTecnicos);
         encerrarProgressBar();
     }
