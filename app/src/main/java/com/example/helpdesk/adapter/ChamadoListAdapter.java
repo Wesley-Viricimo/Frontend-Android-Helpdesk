@@ -1,6 +1,7 @@
 package com.example.helpdesk.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.helpdesk.R;
 import com.example.helpdesk.model.Chamado;
+import com.example.helpdesk.ui.chamado.ChamadoUpdateFragmentUI;
+import com.example.helpdesk.ui.cliente.ClientesUpdateFragmentUI;
 
 import java.util.List;
 
@@ -57,6 +62,13 @@ public class ChamadoListAdapter extends RecyclerView.Adapter<ChamadoListAdapter.
         Glide.with(context)
                 .load(R.drawable.chamado)
                 .into(holder.ivChamado);
+
+        holder.btnChamadoListAlterar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirChamadosUpdate(view, chamado.getId().toString());
+            }
+        });
     }
 
     @Override
@@ -95,6 +107,15 @@ public class ChamadoListAdapter extends RecyclerView.Adapter<ChamadoListAdapter.
             btnChamadoListAlterar = (Button) itemView.findViewById(R.id.btnChamadoListAlterar);
             btnChamadoListExcluir = (Button) itemView.findViewById(R.id.btnChamadoListExcluir);
         }
+    }
+
+    private void abrirChamadosUpdate(View view, String idChamado) {
+        Bundle bundle = new Bundle();
+        bundle.putString("idChamado", idChamado);
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        Fragment fragmentChamadoUpdate = new ChamadoUpdateFragmentUI();
+        fragmentChamadoUpdate.setArguments(bundle);
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentChamadoUpdate).addToBackStack(null).commit();
     }
 
     private String retornaPrioridade(String numPrioridade) {

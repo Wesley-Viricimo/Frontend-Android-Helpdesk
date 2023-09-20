@@ -52,7 +52,6 @@ public class ChamadoCreateFragmentUI extends Fragment {
     private Map<Integer, String> hashPrioridades = new HashMap<>();
     private Map<Integer, String> hashClientes = new HashMap<>();
     private Map<Integer, String> hashTecnicos = new HashMap<>();
-
     private Integer prioridadeSelecionada = 0;
     private Integer statusSelecionado = 0;
     private Integer clienteSelecionado = 0;
