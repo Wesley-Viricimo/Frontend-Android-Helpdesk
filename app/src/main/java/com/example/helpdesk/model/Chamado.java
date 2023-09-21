@@ -8,7 +8,6 @@ public class Chamado {
     Integer status;
     String titulo;
     String observacoes;
-
     Integer tecnico;
     Integer cliente;
     String nomeTecnico;

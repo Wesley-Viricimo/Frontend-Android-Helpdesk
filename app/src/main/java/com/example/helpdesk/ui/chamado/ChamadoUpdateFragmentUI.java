@@ -26,6 +26,9 @@ import com.example.helpdesk.model.Chamado;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.model.Tecnico;
 import com.example.helpdesk.util.TokenUtil;
+import com.example.helpdesk.util.ValidaCamposUtil;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,31 +78,72 @@ public class ChamadoUpdateFragmentUI extends Fragment {
         TokenUtil tokenUtil = new TokenUtil(getActivity());
         String token = tokenUtil.getAcessToken();
 
+        iniciarProgressBar();
         init(token);
 
         componentesAtivos(false);
-        iniciarProgressBar();
 
        this.carregarChamado(idChamado, token);
 
         btnChamadoUpdateAtualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                atualizarChamado(idChamado, token);
             }
         });
 
         btnChamadoUpdateCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                abrirFragmentChamadosList();
             }
         });
 
         return chamadoUpdateFragment;
     }
 
+    private void atualizarChamado(String idChamado, String token) {
+        String titulo = edtChamadoUpdateTitulo.getText().toString();
+        String observacoes = edtChamadoUpdateDescricao.getText().toString();
+
+        ValidaCamposUtil validaCamposUtil = new ValidaCamposUtil(getActivity());
+        if(validaCamposUtil.validacoesChamado(titulo, observacoes, clienteSelecionado, tecnicoSelecionado)) {
+            iniciarProgressBar();
+
+            String nomeCliente = hashClientes.get(clienteSelecionado);
+            String nomeTecnico = hashTecnicos.get(tecnicoSelecionado);
+
+            Chamado chamado = new Chamado(prioridadeSelecionada, statusSelecionado, titulo, observacoes, clienteSelecionado, tecnicoSelecionado, nomeCliente, nomeTecnico);
+
+            apiService = ApiClient.getClient(token).create(ApiService.class);
+            Call<Void> call = apiService.putChamados(idChamado, chamado);
+
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if(response.isSuccessful()) {
+                        requisicaoComSucesso();
+                    } else {
+                        try {
+                            JSONObject jObjError = new JSONObject(response.errorBody().string());
+                            String erro = jObjError.getString("message");
+                            requisicaoComErro(erro);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+
+                }
+            });
+        }
+    }
+
     private void carregarChamado(String idChamado, String token) {
+        sleepThread(false);
         apiService = ApiClient.getClient(token).create(ApiService.class);
         Call<Chamado> call = apiService.getChamado(idChamado);
 
@@ -115,7 +159,7 @@ public class ChamadoUpdateFragmentUI extends Fragment {
                     spnChamadoUpdateCliente.setSelection(getPosicaoCliente(chamado.getNomeCliente()));
                     spnChamadoUpdateTecnico.setSelection(getPosicaoTecnico(chamado.getNomeTecnico()));
 
-                    sleepThread();
+                    sleepThread(true);
                     encerrarProgressBar();
                     componentesAtivos(true);
                 }
@@ -142,17 +186,16 @@ public class ChamadoUpdateFragmentUI extends Fragment {
     }
 
     private void requisicaoComSucesso() {
-        sleepThread();
+        sleepThread(true);
         encerrarProgressBar();
-        Toast.makeText(getContext(), "Chamado aberto com sucesso!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Chamado atualizado com sucesso!", Toast.LENGTH_SHORT).show();
         abrirFragmentChamadosList();
     }
 
     private void requisicaoComErro(String erro) {
-        sleepThread();
+        sleepThread(true);
         encerrarProgressBar();
         Toast.makeText(getActivity(), erro, Toast.LENGTH_SHORT).show();
-        //botaoCadastrarAtivo(true);
     }
 
     private void iniciarProgressBar() {
@@ -168,12 +211,21 @@ public class ChamadoUpdateFragmentUI extends Fragment {
         pbChamadoUpdate.setVisibility(View.GONE);
     }
 
-    private void sleepThread() {
-        try {
-            Thread.sleep(2000);
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void sleepThread(boolean maisTempo) {
+        if(maisTempo) {
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     private void abrirFragmentChamadosList() {
