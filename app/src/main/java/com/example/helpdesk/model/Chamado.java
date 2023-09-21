@@ -72,4 +72,12 @@ public class Chamado {
     public String getNomeCliente() {
         return nomeCliente;
     }
+
+    public Integer getTecnico() {
+        return tecnico;
+    }
+
+    public Integer getCliente() {
+        return cliente;
+    }
 }

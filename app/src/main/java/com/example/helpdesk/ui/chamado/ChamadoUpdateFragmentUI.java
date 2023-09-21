@@ -22,13 +22,16 @@ import android.widget.Toast;
 import com.example.helpdesk.R;
 import com.example.helpdesk.api.client.ApiClient;
 import com.example.helpdesk.api.service.ApiService;
+import com.example.helpdesk.model.Chamado;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.model.Tecnico;
 import com.example.helpdesk.util.TokenUtil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,8 +50,8 @@ public class ChamadoUpdateFragmentUI extends Fragment {
     private ApiService apiService;
     private Map<Integer, String> hashStatus = new HashMap<>();
     private Map<Integer, String> hashPrioridades = new HashMap<>();
-    private Map<Integer, String> hashClientes = new HashMap<>();
-    private Map<Integer, String> hashTecnicos = new HashMap<>();
+    private Map<Integer, String> hashClientes = new TreeMap<>();
+    private Map<Integer, String> hashTecnicos = new TreeMap<>();
     private Integer prioridadeSelecionada = 0;
     private Integer statusSelecionado = 0;
     private Integer clienteSelecionado = 0;
@@ -72,11 +75,12 @@ public class ChamadoUpdateFragmentUI extends Fragment {
         TokenUtil tokenUtil = new TokenUtil(getActivity());
         String token = tokenUtil.getAcessToken();
 
-        //componentesAtivos(false);
-        iniciarProgressBar();
         init(token);
 
-       // this.carregarChamado(idChamado, token);
+        componentesAtivos(false);
+        iniciarProgressBar();
+
+       this.carregarChamado(idChamado, token);
 
         btnChamadoUpdateAtualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,11 +99,41 @@ public class ChamadoUpdateFragmentUI extends Fragment {
         return chamadoUpdateFragment;
     }
 
+    private void carregarChamado(String idChamado, String token) {
+        apiService = ApiClient.getClient(token).create(ApiService.class);
+        Call<Chamado> call = apiService.getChamado(idChamado);
+
+        call.enqueue(new Callback<Chamado>() {
+            @Override
+            public void onResponse(Call<Chamado> call, Response<Chamado> response) {
+                if(response.isSuccessful()) {
+                    Chamado chamado = response.body();
+                    edtChamadoUpdateTitulo.setText(chamado.getTitulo());
+                    edtChamadoUpdateDescricao.setText(chamado.getObservacoes());
+                    spnChamadoUpdateStatus.setSelection(chamado.getStatus());
+                    spnChamadoUpdatePrioridade.setSelection(chamado.getPrioridade());
+                    spnChamadoUpdateCliente.setSelection(getPosicaoCliente(chamado.getNomeCliente()));
+                    spnChamadoUpdateTecnico.setSelection(getPosicaoTecnico(chamado.getNomeTecnico()));
+
+                    sleepThread();
+                    encerrarProgressBar();
+                    componentesAtivos(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Chamado> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
+    }
+
     private void init(String token) {
-        carregarStatus();
-        carregarPrioridades();
         carregarClientes(token);
         carregarTecnicos(token);
+        carregarStatus();
+        carregarPrioridades();
         finalizarLoadStatusPrioridade();
         validarClickStatus();
         validarClickPrioridade();
@@ -229,14 +263,12 @@ public class ChamadoUpdateFragmentUI extends Fragment {
         ArrayAdapter arrayCliente = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashClientes.values().toArray());
         arrayCliente.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
         spnChamadoUpdateCliente.setAdapter(arrayCliente);
-        encerrarProgressBar();
     }
 
     private void finalizarLoadTecnicos() {
         ArrayAdapter arrayTecnicos= new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashTecnicos.values().toArray());
         arrayTecnicos.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
         spnChamadoUpdateTecnico.setAdapter(arrayTecnicos);
-        encerrarProgressBar();
     }
 
     private void validarClickStatus() {
@@ -302,6 +334,27 @@ public class ChamadoUpdateFragmentUI extends Fragment {
                 .findFirst()
                 .map(Map.Entry::getKey)
                 .orElse(null);
+    }
+
+   private Integer getPosicaoCliente(String nomeCliente) {
+       List<String> indexesCliente = new ArrayList<String>(hashClientes.values());
+       return indexesCliente.indexOf(nomeCliente);
+   }
+
+    private Integer getPosicaoTecnico(String nomeTecnico) {
+        List<String> indexesTecnico = new ArrayList<String>(hashTecnicos.values());
+        return indexesTecnico.indexOf(nomeTecnico);
+    }
+
+    private void componentesAtivos(boolean isComponentesAtivos) {
+        edtChamadoUpdateDescricao.setEnabled(isComponentesAtivos);
+        edtChamadoUpdateTitulo.setEnabled(isComponentesAtivos);
+        spnChamadoUpdateStatus.setEnabled(isComponentesAtivos);
+        spnChamadoUpdatePrioridade.setEnabled(isComponentesAtivos);
+        spnChamadoUpdateCliente.setEnabled(isComponentesAtivos);
+        spnChamadoUpdateTecnico.setEnabled(isComponentesAtivos);
+        btnChamadoUpdateAtualizar.setEnabled(isComponentesAtivos);
+        btnChamadoUpdateCancelar.setEnabled(isComponentesAtivos);
     }
 
 }

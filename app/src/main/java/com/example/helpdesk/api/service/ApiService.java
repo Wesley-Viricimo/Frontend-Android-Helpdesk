@@ -56,5 +56,11 @@ public interface ApiService {
     @POST("chamados")
     Call<Void> abrirChamado(@Body Chamado chamado);
 
+    @GET("chamados/{id}")
+    Call<Chamado> getChamado(@Path("id") String id);
+
+    @PUT("chamados/{id}")
+    Call<Void> putChamados(@Path("id") String id, @Body Chamado chamado);
+
 
 }
