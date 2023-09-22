@@ -225,7 +225,6 @@ public class ChamadoUpdateFragmentUI extends Fragment {
                 e.printStackTrace();
             }
         }
-
     }
 
     private void abrirFragmentChamadosList() {
