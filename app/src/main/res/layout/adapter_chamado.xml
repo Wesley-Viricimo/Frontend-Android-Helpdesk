@@ -162,14 +162,14 @@
             android:textColor="@color/white"/>
 
         <Button
-            android:id="@+id/btnChamadoListExcluir"
+            android:id="@+id/btnChamadoListRead"
             android:layout_width="wrap_content"
             android:layout_height="33dp"
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/botao_cancelar_custom"
-            android:text="Excluir"
+            android:text="Ler"
             android:textStyle="bold"
             android:textColor="@color/white"/>
 

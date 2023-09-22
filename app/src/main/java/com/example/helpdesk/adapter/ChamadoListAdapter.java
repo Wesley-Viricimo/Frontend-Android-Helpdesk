@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.helpdesk.R;
 import com.example.helpdesk.model.Chamado;
+import com.example.helpdesk.ui.chamado.ChamadoReadFragmentUI;
 import com.example.helpdesk.ui.chamado.ChamadoUpdateFragmentUI;
 import com.example.helpdesk.ui.cliente.ClientesUpdateFragmentUI;
 
@@ -69,6 +70,13 @@ public class ChamadoListAdapter extends RecyclerView.Adapter<ChamadoListAdapter.
                 abrirChamadosUpdate(view, chamado.getId().toString());
             }
         });
+
+        holder.btnChamadoListRead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirChamadosRead(view, chamado.getId().toString());
+            }
+        });
     }
 
     @Override
@@ -89,7 +97,7 @@ public class ChamadoListAdapter extends RecyclerView.Adapter<ChamadoListAdapter.
         public TextView tvDataAberturaChamado;
         public TextView tvDataFechamentoChamado;
         private Button btnChamadoListAlterar;
-        private Button btnChamadoListExcluir;
+        private Button btnChamadoListRead;
 
         public ChamadoListViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,7 +113,7 @@ public class ChamadoListAdapter extends RecyclerView.Adapter<ChamadoListAdapter.
             tvDataAberturaChamado = (TextView) itemView.findViewById(R.id.tvDataAberturaChamado);
             tvDataFechamentoChamado = (TextView) itemView.findViewById(R.id.tvDataFechamentoChamado);
             btnChamadoListAlterar = (Button) itemView.findViewById(R.id.btnChamadoListAlterar);
-            btnChamadoListExcluir = (Button) itemView.findViewById(R.id.btnChamadoListExcluir);
+            btnChamadoListRead = (Button) itemView.findViewById(R.id.btnChamadoListRead);
         }
     }
 
@@ -116,6 +124,15 @@ public class ChamadoListAdapter extends RecyclerView.Adapter<ChamadoListAdapter.
         Fragment fragmentChamadoUpdate = new ChamadoUpdateFragmentUI();
         fragmentChamadoUpdate.setArguments(bundle);
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentChamadoUpdate).addToBackStack(null).commit();
+    }
+
+    private void abrirChamadosRead(View view, String idChamado) {
+        Bundle bundle = new Bundle();
+        bundle.putString("idChamado", idChamado);
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        Fragment fragmentChamadoRead = new ChamadoReadFragmentUI();
+        fragmentChamadoRead.setArguments(bundle);
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragmentChamadoRead).addToBackStack(null).commit();
     }
 
     private String retornaPrioridade(String numPrioridade) {
