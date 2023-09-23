@@ -1,6 +1,7 @@
 package com.example.helpdesk.ui;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -21,7 +23,6 @@ import com.example.helpdesk.ui.tecnico.TecnicosListFragmentUI;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivityUI extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
@@ -74,9 +75,8 @@ public class MainActivityUI extends AppCompatActivity implements NavigationView.
                 break;
 
             case "Logout":
-                Toast.makeText(this, "Saindo do App", Toast.LENGTH_SHORT).show();
-                removerToken();
-                abrirTelaLogin();
+                AlertDialog dialog = criarDialogoSaida();
+                dialog.show();
                 break;
 
             default:
@@ -89,10 +89,9 @@ public class MainActivityUI extends AppCompatActivity implements NavigationView.
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        if(drawerLayout.isOpen()){
+            AlertDialog dialog = criarDialogoSaida();
+            dialog.show();
         }
     }
 
@@ -106,5 +105,29 @@ public class MainActivityUI extends AppCompatActivity implements NavigationView.
     private void abrirTelaLogin() {
         Intent intent = new Intent(this, LoginActivityUI.class);
         startActivity(intent);
+    }
+
+    private AlertDialog criarDialogoSaida() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Deseja sair do app?");
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finalizarSessaoApp();
+            }
+        });
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        return builder.create();
+    }
+
+    private void finalizarSessaoApp() {
+        Toast.makeText(this, "Saindo do App", Toast.LENGTH_SHORT).show();
+        removerToken();
+        abrirTelaLogin();
     }
 }
