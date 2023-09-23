@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
     android:layout_marginTop="3dp"
+    android:layout_marginRight="5dp"
     android:layout_marginBottom="7dp"
     android:background="@drawable/container_adapter"
     android:orientation="vertical">
@@ -17,27 +17,27 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/ivChamado"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:layout_marginTop="2dp"
                 android:layout_marginLeft="2dp"
-                tools:src="@drawable/chamado"/>
+                android:layout_marginTop="2dp"
+                tools:src="@drawable/chamado" />
 
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="5dp"
         android:orientation="vertical">
 
         <TextView
@@ -47,10 +47,10 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/white"
             android:text="Id"
+            android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvTituloChamado"
@@ -59,8 +59,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/white"
             android:text="Titulo"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
@@ -70,8 +70,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/white"
             android:text="Descricao"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
@@ -81,8 +81,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/white"
             android:text="Prioridade"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
@@ -92,8 +92,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/white"
             android:text="Status"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
@@ -103,8 +103,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/white"
             android:text="Cliente"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
@@ -114,8 +114,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/white"
             android:text="Tecnico"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
@@ -125,8 +125,8 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/white"
             android:text="Data abertura"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
@@ -136,42 +136,42 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:fontFamily="@font/open_sans"
-            android:textColor="@color/white"
             android:text="Data fechamento"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnChamadoListAlterar"
             android:layout_width="wrap_content"
             android:layout_height="33dp"
-            android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:background="@drawable/botao_cadastro_custom"
             android:text="Alterar"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnChamadoListRead"
             android:layout_width="wrap_content"
             android:layout_height="33dp"
-            android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:background="@drawable/botao_cancelar_custom"
             android:text="Ler"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

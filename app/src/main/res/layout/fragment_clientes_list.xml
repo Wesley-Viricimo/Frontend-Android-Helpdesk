@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,17 +34,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/botao_custom"
-                android:textStyle="bold"
+                android:text="Cadastrar Novo Cliente"
                 android:textColor="@color/white"
-                android:text="Cadastrar Novo Cliente" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -55,32 +54,32 @@
 
                 <EditText
                     android:id="@+id/edtBuscarCliente"
-                    android:iconifiedByDefault="true"
-                    android:hint="Buscar Cliente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/container_edit_text_login"
                     android:backgroundTint="@color/login_input_text"
-                    android:textColor="@color/login_text_color"
-                    android:textColorHint="@color/login_hint"
+                    android:hint="Buscar Cliente"
+                    android:iconifiedByDefault="true"
                     android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="@color/login_text_color"
+                    android:textColorHint="@color/login_hint" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btnBuscarCliente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:background="@drawable/botao_custom"
+                    android:text="Buscar"
                     android:textColor="@color/white"
-                    android:text="Buscar"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -98,14 +97,14 @@
                 android:id="@+id/rvClientesList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/adapter_pessoa"/>
+                tools:listitem="@layout/adapter_pessoa" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="190dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="190dp"
             android:orientation="vertical">
 
             <ProgressBar
@@ -114,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </LinearLayout>
 

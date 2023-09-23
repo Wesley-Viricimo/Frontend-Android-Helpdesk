@@ -7,199 +7,198 @@
     tools:context=".ui.chamado.ChamadoCreateFragmentUI">
 
     <LinearLayout
-        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Abrir novo chamado"
             android:fontFamily="@font/open_sans"
-            android:textAllCaps="true"
+            android:text="Abrir novo chamado"
             android:textAlignment="center"
-            android:textStyle="bold"
+            android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Título"
-            android:textColor="@color/white"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="20dp"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtChamadoCreateTitulo"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="35dp"
+                android:text="Título"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/edtChamadoCreateTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/container_edit_text_login"
+                android:backgroundTint="@color/login_input_text"
+                android:hint="Título"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:textColor="@color/login_text_color"
+                android:textColorHint="@color/login_hint" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Título"
-            android:background="@drawable/container_edit_text_login"
-            android:backgroundTint="@color/login_input_text"
-            android:textColor="@color/login_text_color"
-            android:textColorHint="@color/login_hint"
-            android:padding="15dp"
-            android:inputType="text"
-            android:maxLines="1"
-            android:layout_marginTop="5dp"
-            android:layout_marginHorizontal="10dp"/>
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Descrição"
+                android:textColor="@color/white" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            <EditText
+                android:id="@+id/edtChamadoCreateDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/container_edit_text_login"
+                android:backgroundTint="@color/login_input_text"
+                android:hint="Descrição"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:textColor="@color/login_text_color"
+                android:textColorHint="@color/login_hint" />
 
-        <TextView
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descrição"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtChamadoCreateDescricao"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Cliente"
+                android:textColor="@color/white" />
+
+            <Spinner
+                android:id="@+id/spnChamadoCreateCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/container_edit_text_login"
+                android:backgroundTint="@color/login_input_text"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descrição"
-            android:background="@drawable/container_edit_text_login"
-            android:backgroundTint="@color/login_input_text"
-            android:textColor="@color/login_text_color"
-            android:textColorHint="@color/login_hint"
-            android:padding="15dp"
-            android:inputType="text"
-            android:maxLines="1"
-            android:layout_marginTop="5dp"
-            android:layout_marginHorizontal="10dp"/>
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Técnico"
+                android:textColor="@color/white" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            <Spinner
+                android:id="@+id/spnChamadoCreateTecnico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/container_edit_text_login"
+                android:backgroundTint="@color/login_input_text"
+                android:padding="15dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cliente"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"/>
-
-        <Spinner
-            android:id="@+id/spnChamadoCreateCliente"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/container_edit_text_login"
-            android:backgroundTint="@color/login_input_text"
-            android:padding="15dp"
-            android:inputType="text"
-            android:maxLines="1"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="5dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Técnico"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"/>
-
-        <Spinner
-            android:id="@+id/spnChamadoCreateTecnico"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/container_edit_text_login"
-            android:backgroundTint="@color/login_input_text"
-            android:padding="15dp"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="5dp" />
-
-    </LinearLayout>
-
+        </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:layout_marginTop="5dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Status"
-                    android:textColor="@color/white"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:text="Status"
+                    android:textColor="@color/white" />
 
                 <Spinner
                     android:id="@+id/spnChamadoCreateStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
                     android:background="@drawable/container_edit_text_login"
                     android:backgroundTint="@color/login_input_text"
-                    android:padding="15dp"
-                    android:layout_marginRight="5dp" />
+                    android:padding="15dp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:layout_marginTop="5dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Prioridade"
-                    android:textColor="@color/white"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:text="Prioridade"
+                    android:textColor="@color/white" />
 
                 <Spinner
                     android:id="@+id/spnChamadoCreatePrioridade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
                     android:background="@drawable/container_edit_text_login"
                     android:backgroundTint="@color/login_input_text"
-                    android:padding="15dp"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="5dp" />
+                    android:padding="15dp" />
 
             </LinearLayout>
 
@@ -208,49 +207,49 @@
 
 
         <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="10dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnChamadoCreateAbrir"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="3dp"
+                android:layout_weight="1"
                 android:background="@drawable/botao_cadastro_custom"
                 android:text="Abrir"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnChamadoCreateCancelar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="3dp"
+                android:layout_weight="1"
                 android:background="@drawable/botao_cancelar_custom"
                 android:text="Cancelar"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
             android:orientation="vertical">
 
             <ProgressBar
                 android:id="@+id/pbChamadoCreate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </LinearLayout>
     </LinearLayout>
