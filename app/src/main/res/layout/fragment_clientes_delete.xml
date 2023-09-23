@@ -7,7 +7,7 @@
     tools:context=".ui.cliente.ClientesDeleteFragmentUI">
 
     <LinearLayout
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_width="match_parent"
@@ -25,6 +25,19 @@
             android:textColor="@color/white"
             android:textSize="18sp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            android:textColor="@color/white"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"/>
+
         <EditText
             android:id="@+id/edtDeleteCliNome"
             android:layout_width="match_parent"
@@ -37,53 +50,100 @@
             android:padding="15dp"
             android:inputType="text"
             android:maxLines="1"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="5dp"
             android:layout_marginHorizontal="10dp"/>
 
-        <EditText
-            android:id="@+id/edtDeleteCliCpf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="CPF"
-            android:background="@drawable/container_edit_text_login"
-            android:backgroundTint="@color/login_input_text"
-            android:textColor="@color/edt_disabled"
-            android:textColorHint="@color/login_hint"
-            android:padding="15dp"
-            android:inputType="number"
-            android:maxLines="1"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="10dp"/>
+    </LinearLayout>
 
-        <EditText
-            android:id="@+id/edtDeleteCliEmail"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail"
-            android:background="@drawable/container_edit_text_login"
-            android:backgroundTint="@color/login_input_text"
-            android:textColor="@color/edt_disabled"
-            android:textColorHint="@color/login_hint"
-            android:padding="15dp"
-            android:inputType="text"
-            android:maxLines="1"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="10dp"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edtDeleteCliSenha"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CPF"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:id="@+id/edtDeleteCliCpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CPF"
+                android:background="@drawable/container_edit_text_login"
+                android:backgroundTint="@color/login_input_text"
+                android:textColor="@color/edt_disabled"
+                android:textColorHint="@color/login_hint"
+                android:padding="15dp"
+                android:inputType="number"
+                android:maxLines="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginHorizontal="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Senha"
-            android:background="@drawable/container_edit_text_login"
-            android:backgroundTint="@color/login_input_text"
-            android:textColor="@color/edt_disabled"
-            android:textColorHint="@color/login_hint"
-            android:padding="15dp"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="10dp"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:id="@+id/edtDeleteCliEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail"
+                android:background="@drawable/container_edit_text_login"
+                android:backgroundTint="@color/login_input_text"
+                android:textColor="@color/edt_disabled"
+                android:textColorHint="@color/login_hint"
+                android:padding="15dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginHorizontal="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Senha"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"/>
+
+            <EditText
+                android:id="@+id/edtDeleteCliSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Senha"
+                android:background="@drawable/container_edit_text_login"
+                android:backgroundTint="@color/login_input_text"
+                android:textColor="@color/edt_disabled"
+                android:textColorHint="@color/login_hint"
+                android:padding="15dp"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginHorizontal="10dp"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_marginLeft="10dp"
