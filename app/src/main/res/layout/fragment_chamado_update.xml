@@ -7,7 +7,7 @@
     tools:context=".ui.chamado.ChamadoUpdateFragmentUI">
 
     <LinearLayout
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_width="match_parent"
@@ -25,6 +25,19 @@
             android:textColor="@color/white"
             android:textSize="18sp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Título"
+            android:textColor="@color/white"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="20dp"/>
+
         <EditText
             android:id="@+id/edtChamadoUpdateTitulo"
             android:layout_width="match_parent"
@@ -37,8 +50,23 @@
             android:padding="15dp"
             android:inputType="text"
             android:maxLines="1"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="5dp"
             android:layout_marginHorizontal="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"/>
 
         <EditText
             android:id="@+id/edtChamadoUpdateDescricao"
@@ -52,8 +80,23 @@
             android:padding="15dp"
             android:inputType="text"
             android:maxLines="1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginHorizontal="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cliente"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"/>
 
         <Spinner
             android:id="@+id/spnChamadoUpdateCliente"
@@ -66,7 +109,22 @@
             android:maxLines="1"
             android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Técnico"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"/>
 
         <Spinner
             android:id="@+id/spnChamadoUpdateTecnico"
@@ -77,7 +135,9 @@
             android:padding="15dp"
             android:layout_weight="1"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="5dp" />
+
+    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
