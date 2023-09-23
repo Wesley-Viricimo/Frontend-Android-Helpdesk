@@ -19,6 +19,7 @@ import com.example.helpdesk.R;
 import com.example.helpdesk.model.Tecnico;
 import com.example.helpdesk.ui.tecnico.TecnicosDeleteFragmentUI;
 import com.example.helpdesk.ui.tecnico.TecnicosUpdateFragmentUI;
+import com.example.helpdesk.util.CircleTransformUtil;
 import com.example.helpdesk.util.FuncoesUtil;
 
 import java.util.List;
@@ -49,7 +50,10 @@ public class TecnicoListAdapter extends RecyclerView.Adapter<TecnicoListAdapter.
         holder.tvEmail.setText("Email: " + tecnico.getEmail());
         holder.tvDataCadastro.setText("Cadastrado em: " + tecnico.getDataCriacao());
         Glide.with(context)
-                .load(R.drawable.profile)
+                .load(tecnico.getFotoPerfil())
+                .error(R.drawable.profile)
+                .centerCrop()
+                .transform(new CircleTransformUtil(context))
                 .into(holder.ivPessoaImage);
 
         holder.btnAlterarTecnico.setOnClickListener(new View.OnClickListener() {

@@ -10,8 +10,9 @@ public class Tecnico {
     String senha;
     List<String> perfis;
     String dataCriacao;
+    String fotoPerfil;
 
-    public Tecnico(Integer id, String nome, String cpf, String email, String senha, List<String> perfis, String dataCriacao) {
+    public Tecnico(Integer id, String nome, String cpf, String email, String senha, List<String> perfis, String dataCriacao, String fotoPerfil) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -19,6 +20,7 @@ public class Tecnico {
         this.senha = senha;
         this.perfis = perfis;
         this.dataCriacao = dataCriacao;
+        this.fotoPerfil = fotoPerfil;
     }
 
     public Tecnico(String nome, String cpf, String email, String senha, List<String> perfis) {
@@ -62,5 +64,9 @@ public class Tecnico {
 
     public String getDataCriacao() {
         return dataCriacao;
+    }
+
+    public String getFotoPerfil() {
+        return fotoPerfil;
     }
 }

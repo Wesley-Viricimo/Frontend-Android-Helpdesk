@@ -85,7 +85,8 @@ public class ClientesListFragmentUI extends Fragment {
                         String senha = cli.getSenha();
                         List<String> perfis = cli.getPerfis();
                         String dataCriacao = cli.getDataCriacao();
-                        Cliente cliente = new Cliente(id, nome, cpf, email, senha, perfis, dataCriacao);
+                        String fotoPerfil = cli.getFotoPerfil();
+                        Cliente cliente = new Cliente(id, nome, cpf, email, senha, perfis, dataCriacao, fotoPerfil);
                         listClientes.add(cliente);
                     }
                     popularRecyclerView();

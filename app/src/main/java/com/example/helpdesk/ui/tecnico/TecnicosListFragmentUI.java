@@ -92,7 +92,8 @@ public class TecnicosListFragmentUI extends Fragment {
                         String senha = tec.getSenha();
                         List<String> perfis = tec.getPerfis();
                         String dataCriacao = tec.getDataCriacao();
-                        Tecnico tecnico = new Tecnico(id, nome, cpf, email, senha, perfis, dataCriacao);
+                        String fotoPerfil = tec.getFotoPerfil();
+                        Tecnico tecnico = new Tecnico(id, nome, cpf, email, senha, perfis, dataCriacao, fotoPerfil);
                         listTecnicos.add(tecnico);
                     }
                     popularRecyclerView();

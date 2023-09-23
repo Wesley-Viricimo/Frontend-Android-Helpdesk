@@ -11,7 +11,9 @@ public class Cliente {
     List<String> perfis;
     String dataCriacao;
 
-    public Cliente(Integer id, String nome, String cpf, String email, String senha, List<String> perfis, String dataCriacao) {
+    String fotoPerfil;
+
+    public Cliente(Integer id, String nome, String cpf, String email, String senha, List<String> perfis, String dataCriacao, String fotoPerfil) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -19,6 +21,7 @@ public class Cliente {
         this.senha = senha;
         this.perfis = perfis;
         this.dataCriacao = dataCriacao;
+        this.fotoPerfil = fotoPerfil;
     }
 
     public Cliente(String nome, String cpf, String email, String senha, List<String> perfis) {
@@ -62,5 +65,9 @@ public class Cliente {
 
     public String getDataCriacao() {
         return dataCriacao;
+    }
+
+    public String getFotoPerfil() {
+        return fotoPerfil;
     }
 }

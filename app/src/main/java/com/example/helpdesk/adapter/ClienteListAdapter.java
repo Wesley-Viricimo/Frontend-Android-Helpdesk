@@ -19,6 +19,7 @@ import com.example.helpdesk.R;
 import com.example.helpdesk.model.Cliente;
 import com.example.helpdesk.ui.cliente.ClientesDeleteFragmentUI;
 import com.example.helpdesk.ui.cliente.ClientesUpdateFragmentUI;
+import com.example.helpdesk.util.CircleTransformUtil;
 import com.example.helpdesk.util.FuncoesUtil;
 
 import java.util.List;
@@ -48,7 +49,10 @@ public class ClienteListAdapter extends RecyclerView.Adapter<ClienteListAdapter.
         holder.tvEmail.setText("Email: " + cliente.getEmail());
         holder.tvDataCadastro.setText("Cadastrado em: " + cliente.getDataCriacao());
         Glide.with(context)
-                .load(R.drawable.profile)
+                .load(cliente.getFotoPerfil())
+                .error(R.drawable.profile)
+                .centerCrop()
+                .transform(new CircleTransformUtil(context))
                 .into(holder.ivPessoaImage);
 
         holder.btnAlterarCliente.setOnClickListener(new View.OnClickListener() {
