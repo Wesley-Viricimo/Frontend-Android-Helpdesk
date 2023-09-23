@@ -224,8 +224,8 @@ public class ChamadoReadFragmentUI extends Fragment {
     }
 
     private void finalizarLoadStatusPrioridade() {
-        ArrayAdapter arrayStatus = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashStatus.values().toArray());
-        ArrayAdapter arrayPrioridade = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashPrioridades.values().toArray());
+        ArrayAdapter arrayStatus = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom_disabled, hashStatus.values().toArray());
+        ArrayAdapter arrayPrioridade = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom_disabled, hashPrioridades.values().toArray());
         arrayStatus.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
         arrayPrioridade.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
         spnChamadoReadStatus.setAdapter(arrayStatus);
@@ -233,13 +233,13 @@ public class ChamadoReadFragmentUI extends Fragment {
     }
 
     private void finalizarLoadClientes() {
-        ArrayAdapter arrayCliente = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashClientes.values().toArray());
+        ArrayAdapter arrayCliente = new ArrayAdapter(getActivity(), R.layout.spinner_item_custom_disabled, hashClientes.values().toArray());
         arrayCliente.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
         spnChamadoReadCliente.setAdapter(arrayCliente);
     }
 
     private void finalizarLoadTecnicos() {
-        ArrayAdapter arrayTecnicos= new ArrayAdapter(getActivity(), R.layout.spinner_item_custom, hashTecnicos.values().toArray());
+        ArrayAdapter arrayTecnicos= new ArrayAdapter(getActivity(), R.layout.spinner_item_custom_disabled, hashTecnicos.values().toArray());
         arrayTecnicos.setDropDownViewResource(R.layout.spinner_dropdown_item_custom);
         spnChamadoReadTecnico.setAdapter(arrayTecnicos);
     }

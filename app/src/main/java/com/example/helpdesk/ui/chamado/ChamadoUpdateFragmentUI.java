@@ -388,12 +388,12 @@ public class ChamadoUpdateFragmentUI extends Fragment {
     }
 
    private Integer getPosicaoCliente(String nomeCliente) {
-       List<String> indexesCliente = new ArrayList<String>(hashClientes.values());
+       List<String> indexesCliente = new ArrayList<>(hashClientes.values());
        return indexesCliente.indexOf(nomeCliente);
    }
 
     private Integer getPosicaoTecnico(String nomeTecnico) {
-        List<String> indexesTecnico = new ArrayList<String>(hashTecnicos.values());
+        List<String> indexesTecnico = new ArrayList<>(hashTecnicos.values());
         return indexesTecnico.indexOf(nomeTecnico);
     }
 

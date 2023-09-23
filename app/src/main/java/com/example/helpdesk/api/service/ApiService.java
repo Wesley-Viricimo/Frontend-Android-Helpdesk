@@ -62,5 +62,4 @@ public interface ApiService {
     @PUT("chamados/{id}")
     Call<Void> putChamados(@Path("id") String id, @Body Chamado chamado);
 
-
 }
